@@ -5,16 +5,9 @@ from enums.rank import Rank
 
 class RankTestCase(unittest.TestCase):
 
-    def assert_rank_matches_str(self, rank: Rank, expected_string: str):
-        # When
-        rank_string = str(rank)
-
-        # Then
-        self.assertEqual(expected_string, rank_string)
-
-    def test_str(self):
+    def test_symbol_property(self):
         # Given
-        rank_to_string_map = {
+        rank_to_symbol_map = {
             Rank.ACE: "A",
             Rank.KING: "K",
             Rank.QUEEN: "Q",
@@ -31,8 +24,32 @@ class RankTestCase(unittest.TestCase):
         }
 
         # When & Then
-        for rank, expected_string in rank_to_string_map.items():
-            self.assert_rank_matches_str(rank, expected_string)
+        for rank, expected_symbol in rank_to_symbol_map.items():
+            symbol = rank.symbol
+            self.assertEqual(expected_symbol, symbol)
+
+    def test_rank_from_symbol(self):
+        # Given
+        symbol_to_rank_map = {
+            "A": Rank.ACE,
+            "K": Rank.KING,
+            "Q": Rank.QUEEN,
+            "J": Rank.JACK,
+            "T": Rank.TEN,
+            "9": Rank.NINE,
+            "8": Rank.EIGHT,
+            "7": Rank.SEVEN,
+            "6": Rank.SIX,
+            "5": Rank.FIVE,
+            "4": Rank.FOUR,
+            "3": Rank.THREE,
+            "2": Rank.TWO,
+        }
+
+        # When & Then
+        for symbol, expected_rank in symbol_to_rank_map.items():
+            rank = Rank.from_symbol(symbol)
+            self.assertEqual(expected_rank, rank)
 
 
 if __name__ == "__main__":
