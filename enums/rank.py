@@ -18,7 +18,11 @@ class Rank(IntEnum):
     TWO = 12
 
     def __str__(self) -> str:
-        representation = {
+        return self.symbol
+
+    @property
+    def symbol(self) -> str:
+        rank_to_symbol_map = {
             Rank.ACE: "A",
             Rank.KING: "K",
             Rank.QUEEN: "Q",
@@ -33,4 +37,23 @@ class Rank(IntEnum):
             Rank.THREE: "3",
             Rank.TWO: "2",
         }
-        return representation[self]
+        return rank_to_symbol_map[self]
+
+    @staticmethod
+    def from_symbol(symbol: str) -> "Rank":
+        symbol_to_rank_map = {
+            "A": Rank.ACE,
+            "K": Rank.KING,
+            "Q": Rank.QUEEN,
+            "J": Rank.JACK,
+            "T": Rank.TEN,
+            "9": Rank.NINE,
+            "8": Rank.EIGHT,
+            "7": Rank.SEVEN,
+            "6": Rank.SIX,
+            "5": Rank.FIVE,
+            "4": Rank.FOUR,
+            "3": Rank.THREE,
+            "2": Rank.TWO,
+        }
+        return symbol_to_rank_map[symbol]
