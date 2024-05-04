@@ -5,6 +5,28 @@ from enums.rank import Rank
 
 class RankTestCase(unittest.TestCase):
 
+    def test_less_than_comparison(self):
+        # Given
+        lesser = Rank.ACE
+        greater = Rank.KING
+
+        # When
+        comparison = (lesser < greater)
+
+        # Then
+        self.assertTrue(comparison)
+
+    def test_greater_than_comparison(self):
+        # Given
+        lesser = Rank.ACE
+        greater = Rank.KING
+
+        # When
+        comparison = (greater > lesser)
+
+        # Then
+        self.assertTrue(comparison)
+
     def test_symbol_property(self):
         # Given
         rank_to_symbol_map = {
