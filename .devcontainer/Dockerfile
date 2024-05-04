@@ -1,4 +1,5 @@
 FROM python:3.12-bookworm
 
 RUN python3 -m pip install pipx && \
-    python3 -m pipx ensurepath
+    python3 -m pipx ensurepath && \
+    pipx install poetry

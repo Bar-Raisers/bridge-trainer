@@ -1,0 +1,10 @@
+[tool.poetry]
+name = "bridge-trainer"
+version = "0.1.0"
+description = ""
+authors = ["Caleb Meyer"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pydantic = "^2.7.1"
