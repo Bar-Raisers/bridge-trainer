@@ -1,0 +1,7 @@
+{
+    "name": "Bridge Trainer",
+    "build": {
+        "context": "..",
+        "dockerfile": "Dockerfile"
+    }
+}
