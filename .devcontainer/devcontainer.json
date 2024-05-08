@@ -4,6 +4,16 @@
     "context": "..",
     "dockerfile": "Dockerfile"
   },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.testing.unittestEnabled": true,
+        "python.testing.unittestArgs": ["-v", "-s", ".", "-p", "test_*.py"]
+      },
+      "extensions": ["ms-python.python", "ms-python.vscode-pylance"]
+    }
+  },
   "containerUser": "developer",
-  "remoteUser": "developer"
+  "remoteUser": "developer",
+  "postCreateCommand": ".devcontainer/post_create_command.sh"
 }
