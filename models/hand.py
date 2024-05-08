@@ -14,9 +14,4 @@ class Hand(BaseModel):
         self.cards = sorted(self.cards)
 
     def __str__(self) -> str:
-        return ", ".join(
-            [
-                str(card)
-                for card in self.cards
-            ]
-        )
+        return ", ".join([str(card) for card in self.cards])

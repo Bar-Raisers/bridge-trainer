@@ -11,7 +11,7 @@ class RankTestCase(unittest.TestCase):
         greater = Rank.KING
 
         # When
-        comparison = (lesser < greater)
+        comparison = lesser < greater
 
         # Then
         self.assertTrue(comparison)
@@ -22,7 +22,7 @@ class RankTestCase(unittest.TestCase):
         greater = Rank.KING
 
         # When
-        comparison = (greater > lesser)
+        comparison = greater > lesser
 
         # Then
         self.assertTrue(comparison)

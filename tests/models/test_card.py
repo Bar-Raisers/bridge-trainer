@@ -13,7 +13,7 @@ class CardTestCase(unittest.TestCase):
         card_two = Card(rank=Rank.ACE, suit=Suit.SPADES)
 
         # When
-        comparison = (card_one == card_two)
+        comparison = card_one == card_two
 
         # Then
         self.assertTrue(comparison)
@@ -24,7 +24,7 @@ class CardTestCase(unittest.TestCase):
         card_two = Card(rank=Rank.QUEEN, suit=Suit.DIAMONDS)
 
         # When
-        comparison = (card_one != card_two)
+        comparison = card_one != card_two
 
         # Then
         self.assertTrue(comparison)
@@ -35,7 +35,7 @@ class CardTestCase(unittest.TestCase):
         greater = Card(rank=Rank.QUEEN, suit=Suit.DIAMONDS)
 
         # When
-        comparison = (lesser < greater)
+        comparison = lesser < greater
 
         # Then
         self.assertTrue(comparison)
@@ -46,7 +46,7 @@ class CardTestCase(unittest.TestCase):
         greater = Card(rank=Rank.QUEEN, suit=Suit.DIAMONDS)
 
         # When
-        comparison = (greater > lesser)
+        comparison = greater > lesser
 
         # Then
         self.assertTrue(comparison)

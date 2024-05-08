@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 from enum import Enum
 
 
@@ -12,7 +13,7 @@ class Suit(Enum):
     def __lt__(self, other: Suit) -> bool:
         if self.__class__ is not other.__class__:
             return NotImplemented
-        
+
         members = list(self.__class__)
         return members.index(self) < members.index(other)
 

@@ -12,6 +12,10 @@ After launching the DevContainer, simply run:
 
 `poetry install`
 
+### Running Trunk Superlinter
+
+` trunk check`
+
 ### Running Unit Tests
 
 After installing python dependencies, simply run:
