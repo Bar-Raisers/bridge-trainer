@@ -1,7 +1,9 @@
 {
-    "name": "Bridge Trainer",
-    "build": {
-        "context": "..",
-        "dockerfile": "Dockerfile"
-    }
+  "name": "Bridge Trainer",
+  "build": {
+    "context": "..",
+    "dockerfile": "Dockerfile"
+  },
+  "containerUser": "developer",
+  "remoteUser": "developer"
 }
