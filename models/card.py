@@ -29,4 +29,4 @@ class Card(BaseModel):
         return self.rank < other.rank
 
     def __str__(self) -> str:
-        return f'{self.rank.symbol}{self.suit.symbol}'
+        return f"{self.rank.symbol}{self.suit.symbol}"

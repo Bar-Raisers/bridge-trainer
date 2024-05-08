@@ -13,7 +13,7 @@ class HandTestCase(unittest.TestCase):
         ace_spades = Card(rank=Rank.ACE, suit=Suit.SPADES)
         queen_spades = Card(rank=Rank.QUEEN, suit=Suit.SPADES)
         ten_spades = Card(rank=Rank.TEN, suit=Suit.SPADES)
-        
+
         cards = [ten_spades, ace_spades, queen_spades]
         expected_cards = [ace_spades, queen_spades, ten_spades]
 
@@ -29,7 +29,7 @@ class HandTestCase(unittest.TestCase):
             cards=[
                 Card(rank=Rank.ACE, suit=Suit.SPADES),
                 Card(rank=Rank.QUEEN, suit=Suit.SPADES),
-                Card(rank=Rank.TEN, suit=Suit.SPADES)
+                Card(rank=Rank.TEN, suit=Suit.SPADES),
             ]
         )
         expected_string = "AS, QS, TS"
