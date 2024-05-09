@@ -1,0 +1,14 @@
+# Documentation available at: https://www.gitpod.io/docs/configure/workspaces
+
+image:
+  file: /.devcontainer/Dockerfile
+
+tasks:
+  - name: Install Python Dependencies
+    init: |
+      sudo poetry install
+    openMode: tab-after
+  - name: Install Trunk Linters
+    init: |
+      sudo trunk install
+    openMode: tab-after
