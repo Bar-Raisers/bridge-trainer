@@ -32,13 +32,13 @@ lint:
     - bandit@1.7.8
     - black@24.4.2
     - isort@5.13.2
-    
+
     # TOML
     - taplo@0.8.1
-    
+
     # YAML
     - yamllint@1.35.1
-  
+
   disabled:
     - checkov
     - osv-scanner
