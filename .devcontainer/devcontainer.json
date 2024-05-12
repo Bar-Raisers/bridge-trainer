@@ -10,7 +10,12 @@
         "python.testing.unittestEnabled": true,
         "python.testing.unittestArgs": ["-v", "-s", ".", "-p", "test_*.py"]
       },
-      "extensions": ["ms-python.python", "ms-python.vscode-pylance"]
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-vscode-remote.remote-ssh",
+        "ms-vscode-remote.remote-ssh-edit"
+      ]
     }
   },
   "containerUser": "developer",

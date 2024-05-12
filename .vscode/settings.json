@@ -1,4 +1,5 @@
 {
+  "git.autorefresh": true,
   "python.testing.unittestEnabled": true,
   "python.testing.unittestArgs": ["-v", "-s", ".", "-p", "test_*.py"]
 }
