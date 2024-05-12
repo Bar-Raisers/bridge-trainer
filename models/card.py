@@ -17,6 +17,9 @@ class Card(BaseModel):
 
         return self.rank == other.rank and self.suit == other.suit
 
+    def __hash__(self) -> int:
+        return hash(str(self.rank) + str(self.suit))
+
     def __lt__(self, other: Card) -> bool:
         if self.__class__ is not other.__class__:
             return NotImplemented
