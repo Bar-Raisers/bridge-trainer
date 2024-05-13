@@ -58,7 +58,7 @@ class DeckTestCase(unittest.TestCase):
         # Then
         self.assertTrue(is_empty)
 
-    @unittest.mock.patch("dealing.models.deck.shuffle")
+    @mock.patch("dealing.models.deck.shuffle")
     def test_shuffle(self, mock_shuffle):
         # Mock: Reverse Deck on shuffle().
         def shuffle_side_effect(cards: List[Card]) -> None:
@@ -91,7 +91,7 @@ class DeckFactoryTestCase(unittest.TestCase):
         sorted_cards = sorted(sorted_deck.cards)
         self.assertListEqual(sorted_cards, sorted_deck.cards)
 
-    @unittest.mock.patch("dealing.models.deck.shuffle")
+    @mock.patch("dealing.models.deck.shuffle")
     def test_create_shuffled_deck(self, mock_shuffle):
         # Mock: Reverse Deck on shuffle().
         def shuffle_side_effect(cards: List[Card]) -> None:
