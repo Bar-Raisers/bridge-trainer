@@ -1,13 +1,13 @@
 import unittest
 
 from dealing.filters.high_card_points import HighCardPointsFilter
-from dealing.parsing.high_card_points import parse_high_card_points_filter
+from dealing.resources.criteria.high_card_points import parse_high_card_points_criteria
 from enums.seat import Seat
 
 
-class HighCardPointsFilterParsingTestCase(unittest.TestCase):
+class ParseHighCardPointsCriteriaTestCase(unittest.TestCase):
 
-    def test_parse_high_card_points_filter(self):
+    def test_parse_high_card_points_criteria(self):
         # Given
         seat = Seat.NORTH
         minimum_high_card_points = 15
@@ -20,7 +20,7 @@ class HighCardPointsFilterParsingTestCase(unittest.TestCase):
         }
 
         # When
-        filter = parse_high_card_points_filter(attributes)
+        filter = parse_high_card_points_criteria(attributes)
 
         # Then
         self.assertIsInstance(filter, HighCardPointsFilter)
