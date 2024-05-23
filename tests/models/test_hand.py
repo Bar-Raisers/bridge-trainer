@@ -14,14 +14,14 @@ class HandTestCase(unittest.TestCase):
         queen_spades = Card(rank=Rank.QUEEN, suit=Suit.SPADES)
         ten_spades = Card(rank=Rank.TEN, suit=Suit.SPADES)
 
-        cards = [ten_spades, ace_spades, queen_spades]
-        expected_cards = [ace_spades, queen_spades, ten_spades]
+        unsorted_cards = [ten_spades, ace_spades, queen_spades]
+        sorted_cards = [ace_spades, queen_spades, ten_spades]
 
         # When
-        hand = Hand(cards=cards)
+        hand = Hand(cards=unsorted_cards)
 
         # Then
-        self.assertListEqual(expected_cards, hand.cards)
+        self.assertListEqual(sorted_cards, hand.cards)
 
     def test_str(self):
         # Given
