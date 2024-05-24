@@ -1,12 +1,7 @@
 import unittest
 
-from enums.rank import Rank
-from enums.seat import Seat
-from enums.suit import Suit
-from enums.vulnerability import Vulnerability
-from models.card import Card
-from models.deal import Deal
-from models.hand import Hand
+from enums import Rank, Seat, Suit, Vulnerability
+from models import Card, Deal, Hand
 
 
 class DealTestCase(unittest.TestCase):

@@ -1,6 +1,6 @@
 import unittest
 
-from enums.suit import Suit
+from enums import Suit
 
 
 class SuitTestCase(unittest.TestCase):

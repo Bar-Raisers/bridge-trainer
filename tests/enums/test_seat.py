@@ -1,7 +1,7 @@
 import unittest
 from typing import Hashable
 
-from enums.seat import Seat
+from enums import Seat
 
 
 class SeatTestCase(unittest.TestCase):

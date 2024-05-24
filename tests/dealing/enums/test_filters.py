@@ -1,7 +1,7 @@
 import unittest
 from typing import Hashable
 
-from dealing.enums.filters import FilterType
+from dealing.enums import FilterType
 
 
 class FilterTypeTestCase(unittest.TestCase):

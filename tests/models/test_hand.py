@@ -1,9 +1,7 @@
 import unittest
 
-from enums.rank import Rank
-from enums.suit import Suit
-from models.card import Card
-from models.hand import Hand
+from enums import Rank, Suit
+from models import Card, Hand
 
 
 class HandTestCase(unittest.TestCase):

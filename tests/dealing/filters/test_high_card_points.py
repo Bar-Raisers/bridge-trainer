@@ -1,12 +1,8 @@
 import unittest
 
-from dealing.filters.high_card_points import HighCardPointsFilter
-from enums.rank import Rank
-from enums.seat import Seat
-from enums.suit import Suit
-from models.card import Card
-from models.deal import Deal
-from models.hand import Hand
+from dealing.filters import HighCardPointsFilter
+from enums import Rank, Seat, Suit
+from models import Card, Deal, Hand
 
 
 class HighCardPointsTestCase(unittest.TestCase):

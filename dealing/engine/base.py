@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from typing import List
 
 from dealing.filters import DealFilter
-from models.deal import Deal
+from models import Deal
 
 
 class DealEngine(ABC):

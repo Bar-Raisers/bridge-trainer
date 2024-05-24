@@ -1,9 +1,6 @@
-from typing import Dict
-
 from pydantic import BaseModel
 
-from enums.seat import Seat
-from enums.vulnerability import Vulnerability
+from enums import Seat, Vulnerability
 from models.hand import Hand
 
 

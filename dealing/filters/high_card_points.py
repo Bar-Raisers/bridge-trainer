@@ -1,6 +1,6 @@
 from dealing.filters.base import DealFilter
-from enums.seat import Seat
-from models.deal import Deal
+from enums import Seat
+from models import Deal
 from utilities.hand import calculate_high_card_points
 
 

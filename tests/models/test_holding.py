@@ -2,10 +2,8 @@ import unittest
 
 from pydantic import ValidationError
 
-from enums.rank import Rank
-from enums.suit import Suit
-from models.card import Card
-from models.holding import Holding
+from enums import Rank, Suit
+from models import Card, Holding
 
 
 class HoldingTestCase(unittest.TestCase):

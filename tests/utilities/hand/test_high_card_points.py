@@ -1,9 +1,7 @@
 import unittest
 
-from enums.rank import Rank
-from enums.suit import Suit
-from models.card import Card
-from models.hand import Hand
+from enums import Rank, Suit
+from models import Card, Hand
 from utilities.hand.high_card_points import calculate_high_card_points
 
 
