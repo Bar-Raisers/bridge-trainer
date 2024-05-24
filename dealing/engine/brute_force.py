@@ -1,9 +1,6 @@
-from typing import List
-
 from dealing.engine.base import DealEngine
-from dealing.models.deck import DeckFactory
-from models.deal import Deal
-from models.hand import Hand
+from dealing.models import DeckFactory
+from models import Deal, Hand
 
 
 class BruteForceDealEngine(DealEngine):

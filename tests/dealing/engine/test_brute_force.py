@@ -1,8 +1,8 @@
 import unittest
 
-from dealing.engine.brute_force import BruteForceDealEngine
-from dealing.filters.base import DealFilter
-from models.deal import Deal
+from dealing.engine import BruteForceDealEngine
+from dealing.filters import DealFilter
+from models import Deal
 
 
 class MockDealFilter(DealFilter):

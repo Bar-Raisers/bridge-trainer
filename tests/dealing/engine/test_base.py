@@ -1,9 +1,8 @@
 import unittest
 
-from dealing.engine.base import DealEngine
-from dealing.filters.base import DealFilter
-from models.deal import Deal
-from models.hand import Hand
+from dealing.engine import DealEngine
+from dealing.filters import DealFilter
+from models import Deal, Hand
 
 
 class MockDealFilter(DealFilter):

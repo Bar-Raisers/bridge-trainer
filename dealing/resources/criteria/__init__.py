@@ -1,7 +1,7 @@
 import json
 from typing import Any, Dict
 
-from dealing.enums.filters import FilterType
+from dealing.enums import FilterType
 from dealing.filters import DealFilter
 from dealing.resources.criteria.high_card_points import parse_high_card_points_criteria
 
@@ -17,3 +17,10 @@ def parse_criteria(attributes: Dict[str, Any]) -> DealFilter:
     }
     filter_type = FilterType(attributes["type"])
     return parse_by_type[filter_type](attributes)
+
+
+__all__ = [
+    "load_criteria_from_json_file",
+    "parse_criteria",
+    "parse_high_card_points_criteria",
+]
