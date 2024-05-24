@@ -1,6 +1,6 @@
 from typing import Any, Dict
 
-from dealing.filters.high_card_points import HighCardPointsFilter
+from dealing.filters import HighCardPointsFilter
 from enums import Seat
 
 

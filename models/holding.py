@@ -17,6 +17,10 @@ class Holding(BaseModel):
     def __str__(self) -> str:
         return "".join([card.rank.symbol for card in self.cards])
 
+    @property
+    def length(self) -> int:
+        return len(self.cards)
+
     @field_validator("cards")
     @classmethod
     def validate_cards_have_same_suit(cls, cards: List[Card]) -> List[Card]:
