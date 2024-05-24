@@ -23,29 +23,33 @@ class HoldingTestCase(unittest.TestCase):
         # Then
         self.assertListEqual(sorted_cards, holding.cards)
 
-    def test_validate_cards_have_same_suit_with_identical_suits(self):
+    def test_length_property(self):
         # Given
-        cards = [
-            Card(rank=Rank.ACE, suit=Suit.SPADES),
-            Card(rank=Rank.QUEEN, suit=Suit.SPADES),
-        ]
+        holding = Holding(
+            cards=[
+                Card(rank=Rank.ACE, suit=Suit.SPADES),
+                Card(rank=Rank.QUEEN, suit=Suit.SPADES),
+                Card(rank=Rank.TEN, suit=Suit.SPADES),
+            ],
+        )
+        expected_length = 3
 
         # When
-        holding = Holding(cards=cards)
+        length = holding.length
 
-        # Then: Holding instance is created without error.
-        self.assertIsInstance(holding, Holding)
+        # Then
+        self.assertEqual(expected_length, length)
 
-    def test_validate_cards_have_same_suit_with_different_suits(self):
+    def test_length_property_with_void(self):
         # Given
-        cards = [
-            Card(rank=Rank.ACE, suit=Suit.SPADES),
-            Card(rank=Rank.ACE, suit=Suit.HEARTS),
-        ]
+        holding = Holding(cards=[])
+        expected_length = 0
 
-        # When & Then
-        with self.assertRaises(ValidationError):
-            Holding(cards=cards)
+        # When
+        length = holding.length
+
+        # Then
+        self.assertEqual(expected_length, length)
 
     def test_str_with_void(self):
         # Given
@@ -85,6 +89,30 @@ class HoldingTestCase(unittest.TestCase):
 
         # Then
         self.assertEqual(expected_string, string)
+
+    def test_validate_cards_have_same_suit_with_identical_suits(self):
+        # Given
+        cards = [
+            Card(rank=Rank.ACE, suit=Suit.SPADES),
+            Card(rank=Rank.QUEEN, suit=Suit.SPADES),
+        ]
+
+        # When
+        holding = Holding(cards=cards)
+
+        # Then: Holding instance is created without error.
+        self.assertIsInstance(holding, Holding)
+
+    def test_validate_cards_have_same_suit_with_different_suits(self):
+        # Given
+        cards = [
+            Card(rank=Rank.ACE, suit=Suit.SPADES),
+            Card(rank=Rank.ACE, suit=Suit.HEARTS),
+        ]
+
+        # When & Then
+        with self.assertRaises(ValidationError):
+            Holding(cards=cards)
 
 
 if __name__ == "__main__":
