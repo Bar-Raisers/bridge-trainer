@@ -5,28 +5,33 @@ from enums import Rank, Seat, Suit
 from models import Card, Deal, Hand
 
 
-class HighCardPointsTestCase(unittest.TestCase):
+class HighCardPointsFilterTestCase(unittest.TestCase):
 
-    def test_high_card_points_filter_within_range(self):
+    @classmethod
+    def setUpClass(cls):
+        cls.seventeen_hcp_hand = Hand(
+            cards=[
+                Card(rank=Rank.ACE, suit=Suit.SPADES),
+                Card(rank=Rank.JACK, suit=Suit.SPADES),
+                Card(rank=Rank.TEN, suit=Suit.SPADES),
+                Card(rank=Rank.SEVEN, suit=Suit.SPADES),
+                Card(rank=Rank.FOUR, suit=Suit.SPADES),
+                Card(rank=Rank.ACE, suit=Suit.HEARTS),
+                Card(rank=Rank.QUEEN, suit=Suit.HEARTS),
+                Card(rank=Rank.THREE, suit=Suit.HEARTS),
+                Card(rank=Rank.QUEEN, suit=Suit.DIAMONDS),
+                Card(rank=Rank.JACK, suit=Suit.DIAMONDS),
+                Card(rank=Rank.SIX, suit=Suit.DIAMONDS),
+                Card(rank=Rank.KING, suit=Suit.CLUBS),
+                Card(rank=Rank.EIGHT, suit=Suit.CLUBS),
+            ]
+        )
+
+    def test_high_card_points_within_range(self):
         # Given a hand worth 17 high card points
-        cards = [
-            Card(rank=Rank.ACE, suit=Suit.SPADES),
-            Card(rank=Rank.JACK, suit=Suit.SPADES),
-            Card(rank=Rank.TEN, suit=Suit.SPADES),
-            Card(rank=Rank.SEVEN, suit=Suit.SPADES),
-            Card(rank=Rank.FOUR, suit=Suit.SPADES),
-            Card(rank=Rank.ACE, suit=Suit.HEARTS),
-            Card(rank=Rank.QUEEN, suit=Suit.HEARTS),
-            Card(rank=Rank.THREE, suit=Suit.HEARTS),
-            Card(rank=Rank.QUEEN, suit=Suit.DIAMONDS),
-            Card(rank=Rank.JACK, suit=Suit.DIAMONDS),
-            Card(rank=Rank.SIX, suit=Suit.DIAMONDS),
-            Card(rank=Rank.KING, suit=Suit.CLUBS),
-            Card(rank=Rank.EIGHT, suit=Suit.CLUBS),
-        ]
         deal = Deal(
             board_number=1,
-            north=Hand(cards=cards),
+            north=self.seventeen_hcp_hand,
             east=Hand(cards=[]),
             south=Hand(cards=[]),
             west=Hand(cards=[]),
@@ -43,26 +48,11 @@ class HighCardPointsTestCase(unittest.TestCase):
         # Then
         self.assertTrue(evaluation)
 
-    def test_high_card_points_filter_outside_range(self):
+    def test_high_card_points_outside_range(self):
         # Given a hand worth 17 high card points
-        cards = [
-            Card(rank=Rank.ACE, suit=Suit.SPADES),
-            Card(rank=Rank.JACK, suit=Suit.SPADES),
-            Card(rank=Rank.TEN, suit=Suit.SPADES),
-            Card(rank=Rank.SEVEN, suit=Suit.SPADES),
-            Card(rank=Rank.FOUR, suit=Suit.SPADES),
-            Card(rank=Rank.ACE, suit=Suit.HEARTS),
-            Card(rank=Rank.QUEEN, suit=Suit.HEARTS),
-            Card(rank=Rank.THREE, suit=Suit.HEARTS),
-            Card(rank=Rank.QUEEN, suit=Suit.DIAMONDS),
-            Card(rank=Rank.JACK, suit=Suit.DIAMONDS),
-            Card(rank=Rank.SIX, suit=Suit.DIAMONDS),
-            Card(rank=Rank.KING, suit=Suit.CLUBS),
-            Card(rank=Rank.EIGHT, suit=Suit.CLUBS),
-        ]
         deal = Deal(
             board_number=1,
-            north=Hand(cards=cards),
+            north=self.seventeen_hcp_hand,
             east=Hand(cards=[]),
             south=Hand(cards=[]),
             west=Hand(cards=[]),
@@ -79,29 +69,14 @@ class HighCardPointsTestCase(unittest.TestCase):
         # Then
         self.assertFalse(evaluation)
 
-    def test_high_card_points_filter_in_every_seat(self):
+    def test_high_card_points_in_every_seat(self):
         # Given four hands worth 17 high card points
-        cards = [
-            Card(rank=Rank.ACE, suit=Suit.SPADES),
-            Card(rank=Rank.JACK, suit=Suit.SPADES),
-            Card(rank=Rank.TEN, suit=Suit.SPADES),
-            Card(rank=Rank.SEVEN, suit=Suit.SPADES),
-            Card(rank=Rank.FOUR, suit=Suit.SPADES),
-            Card(rank=Rank.ACE, suit=Suit.HEARTS),
-            Card(rank=Rank.QUEEN, suit=Suit.HEARTS),
-            Card(rank=Rank.THREE, suit=Suit.HEARTS),
-            Card(rank=Rank.QUEEN, suit=Suit.DIAMONDS),
-            Card(rank=Rank.JACK, suit=Suit.DIAMONDS),
-            Card(rank=Rank.SIX, suit=Suit.DIAMONDS),
-            Card(rank=Rank.KING, suit=Suit.CLUBS),
-            Card(rank=Rank.EIGHT, suit=Suit.CLUBS),
-        ]
         deal = Deal(
             board_number=1,
-            north=Hand(cards=cards),
-            east=Hand(cards=cards),
-            south=Hand(cards=cards),
-            west=Hand(cards=cards),
+            north=self.seventeen_hcp_hand,
+            east=self.seventeen_hcp_hand,
+            south=self.seventeen_hcp_hand,
+            west=self.seventeen_hcp_hand,
         )
 
         north_filter = HighCardPointsFilter(
