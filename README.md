@@ -15,3 +15,14 @@ The repository is configured with a simple Python 3.12 DevContainer that provide
 ### Running Unit Tests
 
 `python3 -m unittest discover`
+
+## Generating Deals
+
+To generate deals you will need to checkout the repository, open the DevContainer, install the third party dependencies via Poetry, and then run the program with the appropriate command line arguments.
+
+```bash
+poetry install
+python3 main.py <criteria_input_path>.json <pbn_output_path>.pbn --deal_quantity=<desired_quantity>
+```
+
+You can find sample criteria files in the `examples` directory.
