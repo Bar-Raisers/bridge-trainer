@@ -10,5 +10,5 @@ tasks:
     openMode: tab-after
   - name: Install Trunk Linters
     init: |
-      sudo trunk install
+      trunk install
     openMode: tab-after
