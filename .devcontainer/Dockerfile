@@ -27,3 +27,6 @@ WORKDIR /home/developer
 
 # Install Trunk
 RUN curl -fsSL https://get.trunk.io | bash -s -- -y;
+
+# Grant GitPod User Permissions
+RUN chmod 0755 /usr/local/bin/trunk
