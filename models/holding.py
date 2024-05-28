@@ -1,7 +1,6 @@
 from typing import List, Optional
 
 from pydantic import BaseModel, field_validator
-from pydantic_core import PydanticCustomError
 
 from models.card import Card
 
