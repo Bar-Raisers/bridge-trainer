@@ -7,6 +7,61 @@ from models import Distribution
 
 class DistributionTestCase(unittest.TestCase):
 
+    def test_equals_with_matching_exact_distributions(self):
+        # Given
+        distribution_one = Distribution(distribution="5=4=3=1")
+        distribution_two = Distribution(distribution="5=4=3=1")
+
+        # When
+        comparison = distribution_one == distribution_two
+
+        # Then
+        self.assertTrue(comparison)
+
+    def test_equals_with_different_exact_distributions(self):
+        # Given
+        distribution_one = Distribution(distribution="5=4=3=1")
+        distribution_two = Distribution(distribution="5=3=3=2")
+
+        # When
+        comparison = distribution_one == distribution_two
+
+        # Then
+        self.assertFalse(comparison)
+
+    def test_equals_with_matching_inexact_distributions(self):
+        # Given
+        distribution_one = Distribution(distribution="5-4-3-1")
+        distribution_two = Distribution(distribution="5-4-3-1")
+
+        # When
+        comparison = distribution_one == distribution_two
+
+        # Then
+        self.assertTrue(comparison)
+
+    def test_equals_with_different_inexact_distributions(self):
+        # Given
+        distribution_one = Distribution(distribution="5-4-3-1")
+        distribution_two = Distribution(distribution="5-3-3-2")
+
+        # When
+        comparison = distribution_one == distribution_two
+
+        # Then
+        self.assertFalse(comparison)
+
+    def test_equals_sorts_before_comparison_with_matching_inexact_distributions(self):
+        # Given
+        distribution_one = Distribution(distribution="5-4-3-1")
+        distribution_two = Distribution(distribution="4-5-3-1")
+
+        # When
+        comparison = distribution_one == distribution_two
+
+        # Then
+        self.assertTrue(comparison)
+
     def test_is_exact_with_exact_distribution(self):
         # Given
         distribution_str = "4=3=3=3"

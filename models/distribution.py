@@ -10,6 +10,20 @@ class Distribution(BaseModel):
 
     distribution: str
 
+    def __eq__(self, other: Distribution) -> bool:
+        if self.__class__ is not other.__class__:
+            return NotImplemented
+
+        if self.is_exact and other.is_exact:
+            return self.distribution == other.distribution
+
+        if not self.is_exact and not other.is_exact:
+            return sorted(self.suit_lengths, reverse=True) == sorted(
+                other.suit_lengths, reverse=True
+            )
+
+        return False
+
     def __str__(self) -> str:
         return self.distribution
 
