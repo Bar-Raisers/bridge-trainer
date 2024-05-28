@@ -6,6 +6,21 @@ from dealing.resources.criteria import parse_criteria
 
 class ParseCriteriaTestCase(unittest.TestCase):
 
+    @mock.patch("dealing.resources.criteria.parse_distribution_criteria")
+    def test_parse_criteria_with_distribution_criteria(self, mock_filter):
+        # Given
+        attributes = {
+            "type": "distribution",
+            "seat": "north",
+            "distribution": "5=4=3=1",
+        }
+
+        # When
+        parse_criteria(attributes)
+
+        # Then
+        self.assertTrue(mock_filter.called)
+
     @mock.patch("dealing.resources.criteria.parse_high_card_points_criteria")
     def test_parse_criteria_with_high_card_points_criteria(self, mock_filter):
         # Given
