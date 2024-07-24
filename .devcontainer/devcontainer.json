@@ -20,5 +20,12 @@
   },
   "containerUser": "developer",
   "remoteUser": "developer",
+  "runArgs": [
+    "--userns=keep-id:uid=1000,gid=1000"
+  ],
+  "containerEnv": {
+    "SHELL": "/bin/bash"
+  },
+  "updateRemoteUserUID": true,
   "postCreateCommand": ".devcontainer/post_create_command.sh"
 }
