@@ -6,26 +6,27 @@
   },
   "customizations": {
     "vscode": {
-      "settings": {
-        "python.testing.unittestEnabled": true,
-        "python.testing.unittestArgs": ["-v", "-s", ".", "-p", "test_*.py"]
-      },
       "extensions": [
+        "eamodio.gitlens",
+        "ms-azuretools.vscode-docker",
         "ms-python.python",
         "ms-python.vscode-pylance",
         "ms-vscode-remote.remote-ssh",
         "ms-vscode-remote.remote-ssh-edit"
-      ]
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.profiles.linux": {
+          "bash": {
+            "path": "/usr/bin/bash"
+          }
+        }
+      }
     }
   },
   "containerUser": "developer",
   "remoteUser": "developer",
-  "runArgs": [
-    "--userns=keep-id:uid=1000,gid=1000"
-  ],
-  "containerEnv": {
-    "SHELL": "/bin/bash"
-  },
   "updateRemoteUserUID": true,
   "postCreateCommand": ".devcontainer/post_create_command.sh"
 }

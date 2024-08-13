@@ -1,5 +1,10 @@
 {
+  "files.autoSave": "onFocusChange",
+  "files.exclude": {
+    "**/__pycache__": true
+  },
   "git.autorefresh": true,
+  "python.testing.pytestEnabled": false,
   "python.testing.unittestEnabled": true,
   "python.testing.unittestArgs": ["-v", "-s", ".", "-p", "test_*.py"]
 }

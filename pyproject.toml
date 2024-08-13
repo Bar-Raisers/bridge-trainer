@@ -1,9 +1,10 @@
 [tool.poetry]
-name = "bridge-trainer"
-version = "0.1.0"
-description = ""
 authors = ["Caleb Meyer"]
+name = "bridge-trainer"
+description = ""
+package-mode = false
 readme = "README.md"
+version = "0.1.0"
 
 [tool.poetry.dependencies]
 python = "^3.12"
