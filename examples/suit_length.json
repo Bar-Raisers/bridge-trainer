@@ -1,6 +1,6 @@
 {
-  "seat": "south",
   "type": "suit_length",
+  "seat": "south",
   "suit": "spades",
   "minimum": 2,
   "maximum": 5
