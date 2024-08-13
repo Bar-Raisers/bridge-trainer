@@ -18,3 +18,19 @@ class AndFilter(DealFilter):
                 return False
 
         return True
+
+
+class OrFilter(DealFilter):
+
+    def __init__(
+        self,
+        filters: List[DealFilter],
+    ) -> None:
+        self.filters = filters
+
+    def evaluate(self, deal: Deal) -> bool:
+        for filter in self.filters:
+            if filter.evaluate(deal):
+                return True
+
+        return False
