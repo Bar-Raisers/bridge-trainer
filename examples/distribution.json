@@ -1,5 +1,5 @@
 {
-  "seat": "south",
   "type": "distribution",
+  "seat": "south",
   "distribution": "5=4=3=1"
 }

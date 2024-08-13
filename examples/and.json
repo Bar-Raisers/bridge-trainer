@@ -1,0 +1,18 @@
+{
+  "type": "and",
+  "filters": [
+    {
+      "type": "high_card_points",
+      "seat": "south",
+      "minimum": 15,
+      "maximum": 17
+    },
+    {
+      "type": "suit_length",
+      "seat": "south",
+      "suit": "spades",
+      "minimum": 4,
+      "maximum": 5
+    }
+  ]
+}

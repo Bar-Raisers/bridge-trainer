@@ -1,6 +1,6 @@
 {
-  "seat": "south",
   "type": "high_card_points",
+  "seat": "south",
   "minimum": 15,
   "maximum": 17
 }
