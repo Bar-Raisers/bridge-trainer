@@ -1,11 +1,11 @@
 import unittest
 
-from dealing.filters import AndFilter, HighCardPointsFilter, SuitLengthFilter
+from dealing.filters import AndFilter, HighCardPointsFilter, OrFilter, SuitLengthFilter
 from enums import Rank, Seat, Suit
 from models import Card, Deal, Hand
 
 
-class AndFilterTestCase(unittest.TestCase):
+class BooleanFilterTestCase(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -37,12 +37,21 @@ class AndFilterTestCase(unittest.TestCase):
             minimum_high_card_points=15,
             maximum_high_card_points=15,
         )
-        cls.suit_length_filter_5_spades = SuitLengthFilter(
+        cls.spades_length_filter_5 = SuitLengthFilter(
             seat=Seat.NORTH,
             suit=Suit.SPADES,
             minimum_suit_length=5,
             maximum_suit_length=5,
         )
+        cls.spades_length_filter_4 = SuitLengthFilter(
+            seat=Seat.NORTH,
+            suit=Suit.SPADES,
+            minimum_suit_length=4,
+            maximum_suit_length=4,
+        )
+
+
+class AndFilterTestCase(BooleanFilterTestCase):
 
     def test_and_filter(self):
         # Given a 14 HCP, 5=4=3=1 hand in North.
@@ -56,7 +65,7 @@ class AndFilterTestCase(unittest.TestCase):
         filter = AndFilter(
             filters=[
                 self.high_card_points_filter_14,
-                self.suit_length_filter_5_spades,
+                self.spades_length_filter_5,
             ]
         )
 
@@ -78,7 +87,76 @@ class AndFilterTestCase(unittest.TestCase):
         filter = AndFilter(
             filters=[
                 self.high_card_points_filter_15,
-                self.suit_length_filter_5_spades,
+                self.spades_length_filter_5,
+            ]
+        )
+
+        # When
+        evaluation = filter.evaluate(deal)
+
+        # Then
+        self.assertFalse(evaluation)
+
+
+class OrFilterTestCase(BooleanFilterTestCase):
+
+    def test_or_filter_with_passing_filters(self):
+        # Given a 14 HCP, 5=4=3=1 hand in North.
+        deal = Deal(
+            board_number=1,
+            north=self.hand,
+            east=Hand(cards=[]),
+            south=Hand(cards=[]),
+            west=Hand(cards=[]),
+        )
+        filter = OrFilter(
+            filters=[
+                self.high_card_points_filter_14,
+                self.spades_length_filter_5,
+            ]
+        )
+
+        # When
+        evaluation = filter.evaluate(deal)
+
+        # Then
+        self.assertTrue(evaluation)
+
+    def test_or_filter_with_one_passing_and_one_failing_filter(self):
+        # Given a 14 HCP, 5=4=3=1 hand in North.
+        deal = Deal(
+            board_number=1,
+            north=self.hand,
+            east=Hand(cards=[]),
+            south=Hand(cards=[]),
+            west=Hand(cards=[]),
+        )
+        filter = OrFilter(
+            filters=[
+                self.high_card_points_filter_15,
+                self.spades_length_filter_5,
+            ]
+        )
+
+        # When
+        evaluation = filter.evaluate(deal)
+
+        # Then
+        self.assertTrue(evaluation)
+
+    def test_or_filter_with_only_failing_filters(self):
+        # Given a 14 HCp, 5=4=3=1 hand in North.
+        deal = Deal(
+            board_number=1,
+            north=self.hand,
+            east=Hand(cards=[]),
+            south=Hand(cards=[]),
+            west=Hand(cards=[]),
+        )
+        filter = OrFilter(
+            filters=[
+                self.high_card_points_filter_15,
+                self.spades_length_filter_4,
             ]
         )
 

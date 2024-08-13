@@ -5,6 +5,7 @@ class FilterType(Enum):
     AND = "and"
     DISTRIBUTION = "distribution"
     HIGH_CARD_POINTS = "high_card_points"
+    OR = "or"
     SUIT_LENGTH = "suit_length"
 
     def __hash__(self) -> int:
