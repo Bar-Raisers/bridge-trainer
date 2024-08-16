@@ -20,6 +20,18 @@ class AndFilter(DealFilter):
         return True
 
 
+class NotFilter(DealFilter):
+
+    def __init__(
+        self,
+        filter: DealFilter,
+    ) -> None:
+        self.filter = filter
+
+    def evaluate(self, deal: Deal) -> bool:
+        return not self.filter.evaluate(deal)
+
+
 class OrFilter(DealFilter):
 
     def __init__(

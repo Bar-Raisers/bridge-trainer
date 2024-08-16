@@ -65,6 +65,25 @@ class ParseCriteriaTestCase(unittest.TestCase):
         # Then
         self.assertTrue(mock_filter.called)
 
+    @mock.patch("dealing.resources.criteria.parse_not_criteria")
+    def test_parse_criteria_with_not_criteria(self, mock_filter):
+        # Given
+        attributes = {
+            "type": "not",
+            "filter": {
+                "type": "high_card_points",
+                "seat": "north",
+                "minimum": 10,
+                "maximum": 10,
+            },
+        }
+
+        # When
+        parse_criteria(attributes)
+
+        # Then
+        self.assertTrue(mock_filter.called)
+
     @mock.patch("dealing.resources.criteria.parse_or_criteria")
     def test_parse_criteria_with_or_criteria(self, mock_filter):
         # Given

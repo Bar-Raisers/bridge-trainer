@@ -5,6 +5,7 @@ class FilterType(Enum):
     AND = "and"
     DISTRIBUTION = "distribution"
     HIGH_CARD_POINTS = "high_card_points"
+    NOT = "not"
     OR = "or"
     SUIT_LENGTH = "suit_length"
 

@@ -1,6 +1,12 @@
 import unittest
 
-from dealing.filters import AndFilter, HighCardPointsFilter, OrFilter, SuitLengthFilter
+from dealing.filters import (
+    AndFilter,
+    HighCardPointsFilter,
+    NotFilter,
+    OrFilter,
+    SuitLengthFilter,
+)
 from enums import Rank, Seat, Suit
 from models import Card, Deal, Hand
 
@@ -96,6 +102,43 @@ class AndFilterTestCase(BooleanFilterTestCase):
 
         # Then
         self.assertFalse(evaluation)
+
+
+class NotFilterTestCase(BooleanFilterTestCase):
+
+    def test_not_filter_with_passing_filter(self):
+        # Given a 14 HCP, 5=4=3=1 hand in North.
+        deal = Deal(
+            board_number=1,
+            north=self.hand,
+            east=Hand(cards=[]),
+            south=Hand(cards=[]),
+            west=Hand(cards=[]),
+        )
+        filter = NotFilter(filter=self.high_card_points_filter_14)
+
+        # When
+        evaluation = filter.evaluate(deal)
+
+        # Then
+        self.assertFalse(evaluation)
+
+    def test_not_filter_with_failing_filter(self):
+        # Given a 14 HCP, 5=4=3=1 hand in North.
+        deal = Deal(
+            board_number=1,
+            north=self.hand,
+            east=Hand(cards=[]),
+            south=Hand(cards=[]),
+            west=Hand(cards=[]),
+        )
+        filter = NotFilter(filter=self.high_card_points_filter_15)
+
+        # When
+        evaluation = filter.evaluate(deal)
+
+        # Then
+        self.assertTrue(evaluation)
 
 
 class OrFilterTestCase(BooleanFilterTestCase):
