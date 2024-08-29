@@ -38,3 +38,28 @@ class DistributionFilter(DealFilter):
         hand = deal.get_hand(self.seat)
         distribution = get_distribution(hand)
         return self.distribution.matches(distribution)
+
+
+class BalancedFilter(DealFilter):
+
+    BALANCED_DISTRIBUTIONS = [
+        Distribution(distribution="5-3-3-2"),
+        Distribution(distribution="4-4-3-2"),
+        Distribution(distribution="4-3-3-3"),
+    ]
+
+    def __init__(
+        self,
+        seat: Seat,
+    ) -> None:
+        self.seat = seat
+
+    def evaluate(self, deal: Deal) -> bool:
+        hand = deal.get_hand(self.seat)
+        distribution = get_distribution(hand)
+
+        for balanced_distribution in self.BALANCED_DISTRIBUTIONS:
+            if distribution.matches(balanced_distribution):
+                return True
+
+        return False

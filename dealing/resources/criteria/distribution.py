@@ -1,11 +1,13 @@
 from typing import Any, Dict
 
-from common.enums import Seat
-from common.models import Distribution
 from dealing.filters import BalancedFilter, DistributionFilter
+from enums import Seat
+from models import Distribution
 
 
-def parse_balanced_criteria(attributes: Dict[str, Any]) -> BalancedFilter:
+def parse_balanced_distribution_criteria(
+    attributes: Dict[str, Any]
+) -> DistributionFilter:
     seat = Seat(attributes["seat"])
     return BalancedFilter(seat=seat)
 

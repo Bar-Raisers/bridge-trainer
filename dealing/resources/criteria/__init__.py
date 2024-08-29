@@ -3,7 +3,7 @@ from typing import Any, Dict
 from dealing.enums import FilterType
 from dealing.filters import AndFilter, DealFilter, NotFilter, OrFilter
 from dealing.resources.criteria.distribution import (
-    parse_balanced_criteria,
+    parse_balanced_distribution_criteria,
     parse_distribution_criteria,
 )
 from dealing.resources.criteria.high_card_points import parse_high_card_points_criteria
@@ -28,7 +28,7 @@ def parse_or_criteria(attributes: Dict[str, Any]) -> OrFilter:
 def parse_criteria(attributes: Dict[str, Any]) -> DealFilter:
     parse_by_type = {
         FilterType.AND: parse_and_criteria,
-        FilterType.BALANCED: parse_balanced_criteria,
+        FilterType.BALANCED: parse_balanced_distribution_criteria,
         FilterType.DISTRIBUTION: parse_distribution_criteria,
         FilterType.HIGH_CARD_POINTS: parse_high_card_points_criteria,
         FilterType.NOT: parse_not_criteria,
@@ -41,7 +41,7 @@ def parse_criteria(attributes: Dict[str, Any]) -> DealFilter:
 
 __all__ = [
     "parse_and_criteria",
-    "parse_balanced_criteria",
+    "parse_balanced_distribution_criteria",
     "parse_criteria",
     "parse_distribution_criteria",
     "parse_high_card_points_criteria",
