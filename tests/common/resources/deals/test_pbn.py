@@ -2,8 +2,8 @@ import unittest
 
 from common.enums import Rank, Seat, Suit, Vulnerability
 from common.models import Card, Deal, Hand
+from common.resources.deals.pbn import PBNImportFormatter
 from dealing.models import DeckFactory
-from resources.deals.pbn import PBNImportFormatter
 
 
 class PBNImportFormatterTestCase(unittest.TestCase):

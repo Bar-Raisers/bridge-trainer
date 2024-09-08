@@ -1,7 +1,7 @@
 from typing import List
 
 from common.models import Deal
-from resources.deals import PBNImportFormatter
+from common.resources.deals import PBNImportFormatter
 
 
 def write_deals_to_pbn_file(pbn_file_path: str, deals: List[Deal]) -> None:
