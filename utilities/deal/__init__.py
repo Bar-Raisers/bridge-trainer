@@ -1,6 +1,6 @@
 from typing import List
 
-from models import Deal
+from common.models import Deal
 from resources.deals import PBNImportFormatter
 
 

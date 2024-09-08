@@ -1,6 +1,6 @@
 from common.enums import Seat
+from common.models import Deal
 from dealing.filters.base import DealFilter
-from models import Deal
 from utilities.hand import calculate_high_card_points
 
 

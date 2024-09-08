@@ -3,8 +3,8 @@ from typing import List
 from unittest import mock
 
 from common.enums import Rank, Suit
+from common.models import Card
 from dealing.models import Deck, DeckFactory
-from models import Card
 
 
 class DeckTestCase(unittest.TestCase):

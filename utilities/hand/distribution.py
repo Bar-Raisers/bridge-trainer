@@ -1,5 +1,5 @@
 from common.enums import Suit
-from models import Distribution, Hand
+from common.models import Distribution, Hand
 
 
 def get_distribution(hand: Hand) -> Distribution:

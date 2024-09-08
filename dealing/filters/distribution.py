@@ -1,6 +1,6 @@
 from common.enums import Seat
+from common.models import Deal, Distribution
 from dealing.filters.base import DealFilter
-from models import Deal, Distribution
 from utilities.hand import get_distribution
 
 

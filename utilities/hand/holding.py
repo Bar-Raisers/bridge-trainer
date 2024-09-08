@@ -1,5 +1,5 @@
 from common.enums import Suit
-from models import Hand, Holding
+from common.models import Hand, Holding
 
 
 def get_holding_in_suit(hand: Hand, suit: Suit) -> Holding:

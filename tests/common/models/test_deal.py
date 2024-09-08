@@ -1,7 +1,7 @@
 import unittest
 
 from common.enums import Rank, Seat, Suit, Vulnerability
-from models import Card, Deal, Hand
+from common.models import Card, Deal, Hand
 
 
 class DealTestCase(unittest.TestCase):

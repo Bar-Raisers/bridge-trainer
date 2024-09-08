@@ -1,6 +1,6 @@
 from common.enums import Seat, Suit
+from common.models import Deal
 from dealing.filters.base import DealFilter
-from models import Deal
 from utilities.hand import get_holding_in_suit
 
 

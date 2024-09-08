@@ -2,7 +2,7 @@ from typing import List, Optional
 
 from pydantic import BaseModel, field_validator
 
-from models.card import Card
+from common.models.card import Card
 
 
 class Holding(BaseModel):

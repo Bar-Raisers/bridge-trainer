@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 from common.enums import Seat, Vulnerability
-from models.hand import Hand
+from common.models.hand import Hand
 
 
 class Deal(BaseModel):

@@ -2,7 +2,7 @@ import unittest
 
 from pydantic import ValidationError
 
-from models import Distribution
+from common.models import Distribution
 
 
 class DistributionTestCase(unittest.TestCase):

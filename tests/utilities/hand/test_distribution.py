@@ -1,7 +1,7 @@
 import unittest
 
 from common.enums import Rank, Suit
-from models import Card, Distribution, Hand
+from common.models import Card, Distribution, Hand
 from utilities.hand.distribution import get_distribution
 
 

@@ -1,5 +1,5 @@
 from common.enums import Rank
-from models import Hand
+from common.models import Hand
 
 
 def calculate_high_card_points(hand: Hand) -> int:

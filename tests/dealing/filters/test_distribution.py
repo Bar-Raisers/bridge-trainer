@@ -1,8 +1,8 @@
 import unittest
 
 from common.enums import Rank, Seat, Suit
+from common.models import Card, Deal, Distribution, Hand
 from dealing.filters import DistributionFilter
-from models import Card, Deal, Distribution, Hand
 
 
 class DistributionFilterTestCase(unittest.TestCase):

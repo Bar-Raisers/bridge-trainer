@@ -3,7 +3,7 @@ import unittest
 from pydantic import ValidationError
 
 from common.enums import Rank, Suit
-from models import Card, Holding
+from common.models import Card, Holding
 
 
 class HoldingTestCase(unittest.TestCase):

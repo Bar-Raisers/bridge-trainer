@@ -4,7 +4,7 @@ from typing import List
 from pydantic import BaseModel
 
 from common.enums import Rank, Suit
-from models import Card
+from common.models import Card
 
 
 class Deck(BaseModel):

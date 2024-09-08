@@ -1,7 +1,7 @@
 import unittest
 
 from common.enums import Rank, Suit
-from models import Card
+from common.models import Card
 
 
 class CardTestCase(unittest.TestCase):

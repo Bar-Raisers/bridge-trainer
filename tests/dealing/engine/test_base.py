@@ -1,8 +1,8 @@
 import unittest
 
+from common.models import Deal, Hand
 from dealing.engine import DealEngine
 from dealing.filters import DealFilter
-from models import Deal, Hand
 
 
 class MockDealFilter(DealFilter):

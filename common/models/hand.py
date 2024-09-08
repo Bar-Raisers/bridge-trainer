@@ -2,7 +2,7 @@ from typing import List, Optional
 
 from pydantic import BaseModel
 
-from models.card import Card
+from common.models.card import Card
 
 
 class Hand(BaseModel):

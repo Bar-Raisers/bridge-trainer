@@ -1,6 +1,6 @@
+from common.models import Deal, Hand
 from dealing.engine.base import DealEngine
 from dealing.models import DeckFactory
-from models import Deal, Hand
 
 
 class BruteForceDealEngine(DealEngine):
