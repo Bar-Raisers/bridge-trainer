@@ -1,7 +1,7 @@
 from typing import Any, Dict
 
+from common.enums import Seat
 from dealing.filters import DistributionFilter
-from enums import Seat
 from models import Distribution
 
 

@@ -1,6 +1,6 @@
 import unittest
 
-from enums import Rank, Suit
+from common.enums import Rank, Suit
 from models import Card, Hand
 
 

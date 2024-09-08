@@ -1,4 +1,4 @@
-from enums import Rank
+from common.enums import Rank
 from models import Hand
 
 

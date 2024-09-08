@@ -1,7 +1,7 @@
 from typing import Any, Dict
 
+from common.enums import Seat, Suit
 from dealing.filters import SuitLengthFilter
-from enums import Seat, Suit
 
 
 def parse_suit_length_criteria(attributes: Dict[str, Any]) -> SuitLengthFilter:

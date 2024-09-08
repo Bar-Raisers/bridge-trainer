@@ -1,5 +1,6 @@
 import unittest
 
+from common.enums import Rank, Seat, Suit
 from dealing.filters import (
     AndFilter,
     HighCardPointsFilter,
@@ -7,7 +8,6 @@ from dealing.filters import (
     OrFilter,
     SuitLengthFilter,
 )
-from enums import Rank, Seat, Suit
 from models import Card, Deal, Hand
 
 

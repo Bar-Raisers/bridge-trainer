@@ -1,6 +1,6 @@
 import unittest
 
-from enums import Rank, Seat, Suit, Vulnerability
+from common.enums import Rank, Seat, Suit, Vulnerability
 from models import Card, Deal, Hand
 
 

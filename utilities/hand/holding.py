@@ -1,4 +1,4 @@
-from enums import Suit
+from common.enums import Suit
 from models import Hand, Holding
 
 

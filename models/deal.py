@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from enums import Seat, Vulnerability
+from common.enums import Seat, Vulnerability
 from models.hand import Hand
 
 

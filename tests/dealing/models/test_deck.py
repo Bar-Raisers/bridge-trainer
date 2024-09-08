@@ -2,8 +2,8 @@ import unittest
 from typing import List
 from unittest import mock
 
+from common.enums import Rank, Suit
 from dealing.models import Deck, DeckFactory
-from enums import Rank, Suit
 from models import Card
 
 

@@ -1,8 +1,8 @@
 import unittest
 
+from common.enums import Seat
 from dealing.filters import DistributionFilter
 from dealing.resources.criteria import parse_distribution_criteria
-from enums import Seat
 from models import Distribution
 
 

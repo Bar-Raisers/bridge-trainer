@@ -1,7 +1,7 @@
 import unittest
 
+from common.enums import Rank, Seat, Suit, Vulnerability
 from dealing.models import DeckFactory
-from enums import Rank, Seat, Suit, Vulnerability
 from models import Card, Deal, Hand
 from resources.deals.pbn import PBNImportFormatter
 

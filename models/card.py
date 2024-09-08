@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pydantic import BaseModel
 
-from enums import Rank, Suit
+from common.enums import Rank, Suit
 
 
 class Card(BaseModel):

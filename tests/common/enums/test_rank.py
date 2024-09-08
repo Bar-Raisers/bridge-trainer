@@ -1,6 +1,6 @@
 import unittest
 
-from enums import Rank
+from common.enums import Rank
 
 
 class RankTestCase(unittest.TestCase):

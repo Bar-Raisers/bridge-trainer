@@ -1,7 +1,7 @@
 import unittest
 
+from common.enums import Rank, Seat, Suit
 from dealing.filters import SuitLengthFilter
-from enums import Rank, Seat, Suit
 from models import Card, Deal, Hand
 
 

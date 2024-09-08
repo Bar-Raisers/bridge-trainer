@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import List
 
-from enums import Seat, Suit, Vulnerability
+from common.enums import Seat, Suit, Vulnerability
 from models import Deal, Hand
 from utilities.hand import get_holding_in_suit
 

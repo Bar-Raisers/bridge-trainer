@@ -1,7 +1,7 @@
 from typing import Any, Dict
 
+from common.enums import Seat
 from dealing.filters import HighCardPointsFilter
-from enums import Seat
 
 
 def parse_high_card_points_criteria(attributes: Dict[str, Any]) -> HighCardPointsFilter:

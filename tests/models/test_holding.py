@@ -2,7 +2,7 @@ import unittest
 
 from pydantic import ValidationError
 
-from enums import Rank, Suit
+from common.enums import Rank, Suit
 from models import Card, Holding
 
 

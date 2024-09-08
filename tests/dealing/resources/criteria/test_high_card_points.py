@@ -1,8 +1,8 @@
 import unittest
 
+from common.enums import Seat
 from dealing.filters import HighCardPointsFilter
 from dealing.resources.criteria import parse_high_card_points_criteria
-from enums import Seat
 
 
 class ParseHighCardPointsCriteriaTestCase(unittest.TestCase):
