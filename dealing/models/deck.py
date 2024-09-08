@@ -3,8 +3,8 @@ from typing import List
 
 from pydantic import BaseModel
 
-from enums import Rank, Suit
-from models import Card
+from common.enums import Rank, Suit
+from common.models import Card
 
 
 class Deck(BaseModel):

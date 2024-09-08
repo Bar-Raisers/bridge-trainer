@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
 from typing import List
 
+from common.models import Deal
 from dealing.filters import DealFilter
-from models import Deal
 
 
 class DealEngine(ABC):

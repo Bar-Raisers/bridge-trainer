@@ -1,8 +1,8 @@
 import argparse
 
+from common.utilities.deal import write_deals_to_pbn_file
 from dealing.engine import BruteForceDealEngine
 from dealing.utilities import parse_criteria_from_json_file
-from utilities.deal import write_deals_to_pbn_file
 
 
 def main():

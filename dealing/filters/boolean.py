@@ -1,7 +1,7 @@
 from typing import List
 
+from common.models import Deal
 from dealing.filters.base import DealFilter
-from models import Deal
 
 
 class AndFilter(DealFilter):

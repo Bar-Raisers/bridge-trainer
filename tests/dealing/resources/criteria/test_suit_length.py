@@ -1,8 +1,8 @@
 import unittest
 
+from common.enums import Seat, Suit
 from dealing.filters import SuitLengthFilter
 from dealing.resources.criteria import parse_suit_length_criteria
-from enums import Seat, Suit
 
 
 class ParseSuitLengthCriteriaTestCase(unittest.TestCase):

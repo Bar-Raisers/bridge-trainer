@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from models import Deal
+from common.models import Deal
 
 
 class DealFilter(ABC):

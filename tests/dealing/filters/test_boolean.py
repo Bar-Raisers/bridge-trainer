@@ -1,5 +1,7 @@
 import unittest
 
+from common.enums import Rank, Seat, Suit
+from common.models import Card, Deal, Hand
 from dealing.filters import (
     AndFilter,
     HighCardPointsFilter,
@@ -7,8 +9,6 @@ from dealing.filters import (
     OrFilter,
     SuitLengthFilter,
 )
-from enums import Rank, Seat, Suit
-from models import Card, Deal, Hand
 
 
 class BooleanFilterTestCase(unittest.TestCase):

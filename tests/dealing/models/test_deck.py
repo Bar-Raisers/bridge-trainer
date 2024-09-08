@@ -2,9 +2,9 @@ import unittest
 from typing import List
 from unittest import mock
 
+from common.enums import Rank, Suit
+from common.models import Card
 from dealing.models import Deck, DeckFactory
-from enums import Rank, Suit
-from models import Card
 
 
 class DeckTestCase(unittest.TestCase):
