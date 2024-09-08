@@ -6,7 +6,7 @@ from typing import List
 
 from common.enums import Seat, Suit, Vulnerability
 from common.models import Deal, Hand
-from utilities.hand import get_holding_in_suit
+from common.utilities.hand import get_holding_in_suit
 
 
 class PBNImportFormatter:

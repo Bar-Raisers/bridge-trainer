@@ -1,7 +1,7 @@
 from common.enums import Seat, Suit
 from common.models import Deal
+from common.utilities.hand import get_holding_in_suit
 from dealing.filters.base import DealFilter
-from utilities.hand import get_holding_in_suit
 
 
 class SuitLengthFilter(DealFilter):

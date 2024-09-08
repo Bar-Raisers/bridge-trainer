@@ -2,7 +2,7 @@ import unittest
 
 from common.enums import Rank, Suit
 from common.models import Card, Distribution, Hand
-from utilities.hand.distribution import get_distribution
+from common.utilities.hand.distribution import get_distribution
 
 
 class DistributionTestCase(unittest.TestCase):
