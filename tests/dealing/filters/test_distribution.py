@@ -2,7 +2,226 @@ import unittest
 
 from common.enums import Rank, Seat, Suit
 from common.models import Card, Deal, Distribution, Hand
-from dealing.filters import DistributionFilter
+from dealing.filters import BalancedFilter, DistributionFilter
+
+
+class BalancedFilterTestCase(unittest.TestCase):
+
+    def test_balanced_filter_with_4333_hand(self):
+        # Given
+        hand_4333 = Hand(
+            cards=[
+                Card(rank=Rank.ACE, suit=Suit.SPADES),
+                Card(rank=Rank.KING, suit=Suit.SPADES),
+                Card(rank=Rank.QUEEN, suit=Suit.SPADES),
+                Card(rank=Rank.JACK, suit=Suit.SPADES),
+                Card(rank=Rank.ACE, suit=Suit.HEARTS),
+                Card(rank=Rank.KING, suit=Suit.HEARTS),
+                Card(rank=Rank.QUEEN, suit=Suit.HEARTS),
+                Card(rank=Rank.ACE, suit=Suit.DIAMONDS),
+                Card(rank=Rank.KING, suit=Suit.DIAMONDS),
+                Card(rank=Rank.QUEEN, suit=Suit.DIAMONDS),
+                Card(rank=Rank.ACE, suit=Suit.CLUBS),
+                Card(rank=Rank.KING, suit=Suit.CLUBS),
+                Card(rank=Rank.QUEEN, suit=Suit.CLUBS),
+            ],
+        )
+        deal = Deal(
+            board_number=1,
+            north=hand_4333,
+            east=Hand(cards=[]),
+            south=Hand(cards=[]),
+            west=Hand(cards=[]),
+        )
+        filter = BalancedFilter(
+            seat=Seat.NORTH,
+        )
+
+        # When
+        evaluation = filter.evaluate(deal)
+
+        # Then
+        self.assertTrue(evaluation)
+
+    def test_balanced_filter_with_4432_hand(self):
+        # Given
+        hand_4432 = Hand(
+            cards=[
+                Card(rank=Rank.ACE, suit=Suit.SPADES),
+                Card(rank=Rank.KING, suit=Suit.SPADES),
+                Card(rank=Rank.QUEEN, suit=Suit.SPADES),
+                Card(rank=Rank.JACK, suit=Suit.SPADES),
+                Card(rank=Rank.ACE, suit=Suit.HEARTS),
+                Card(rank=Rank.KING, suit=Suit.HEARTS),
+                Card(rank=Rank.QUEEN, suit=Suit.HEARTS),
+                Card(rank=Rank.JACK, suit=Suit.HEARTS),
+                Card(rank=Rank.ACE, suit=Suit.DIAMONDS),
+                Card(rank=Rank.KING, suit=Suit.DIAMONDS),
+                Card(rank=Rank.QUEEN, suit=Suit.DIAMONDS),
+                Card(rank=Rank.ACE, suit=Suit.CLUBS),
+                Card(rank=Rank.KING, suit=Suit.CLUBS),
+            ],
+        )
+        deal = Deal(
+            board_number=1,
+            north=hand_4432,
+            east=Hand(cards=[]),
+            south=Hand(cards=[]),
+            west=Hand(cards=[]),
+        )
+        filter = BalancedFilter(
+            seat=Seat.NORTH,
+        )
+
+        # When
+        evaluation = filter.evaluate(deal)
+
+        # Then
+        self.assertTrue(evaluation)
+
+    def test_balanced_filter_with_5332_hand(self):
+        # Given
+        hand_5332 = Hand(
+            cards=[
+                Card(rank=Rank.ACE, suit=Suit.SPADES),
+                Card(rank=Rank.KING, suit=Suit.SPADES),
+                Card(rank=Rank.QUEEN, suit=Suit.SPADES),
+                Card(rank=Rank.JACK, suit=Suit.SPADES),
+                Card(rank=Rank.TEN, suit=Suit.SPADES),
+                Card(rank=Rank.ACE, suit=Suit.HEARTS),
+                Card(rank=Rank.KING, suit=Suit.HEARTS),
+                Card(rank=Rank.QUEEN, suit=Suit.HEARTS),
+                Card(rank=Rank.ACE, suit=Suit.DIAMONDS),
+                Card(rank=Rank.KING, suit=Suit.DIAMONDS),
+                Card(rank=Rank.QUEEN, suit=Suit.DIAMONDS),
+                Card(rank=Rank.ACE, suit=Suit.CLUBS),
+                Card(rank=Rank.KING, suit=Suit.CLUBS),
+            ],
+        )
+        deal = Deal(
+            board_number=1,
+            north=hand_5332,
+            east=Hand(cards=[]),
+            south=Hand(cards=[]),
+            west=Hand(cards=[]),
+        )
+        filter = BalancedFilter(
+            seat=Seat.NORTH,
+        )
+
+        # When
+        evaluation = filter.evaluate(deal)
+
+        # Then
+        self.assertTrue(evaluation)
+
+    def test_balanced_filter_with_hand_containing_two_doubletons(self):
+        # Given
+        two_doubletons_hand = Hand(
+            cards=[
+                Card(rank=Rank.ACE, suit=Suit.SPADES),
+                Card(rank=Rank.KING, suit=Suit.SPADES),
+                Card(rank=Rank.QUEEN, suit=Suit.SPADES),
+                Card(rank=Rank.JACK, suit=Suit.SPADES),
+                Card(rank=Rank.TEN, suit=Suit.SPADES),
+                Card(rank=Rank.NINE, suit=Suit.SPADES),
+                Card(rank=Rank.ACE, suit=Suit.HEARTS),
+                Card(rank=Rank.KING, suit=Suit.HEARTS),
+                Card(rank=Rank.QUEEN, suit=Suit.HEARTS),
+                Card(rank=Rank.ACE, suit=Suit.DIAMONDS),
+                Card(rank=Rank.KING, suit=Suit.DIAMONDS),
+                Card(rank=Rank.ACE, suit=Suit.CLUBS),
+                Card(rank=Rank.KING, suit=Suit.CLUBS),
+            ],
+        )
+        deal = Deal(
+            board_number=1,
+            north=two_doubletons_hand,
+            east=Hand(cards=[]),
+            south=Hand(cards=[]),
+            west=Hand(cards=[]),
+        )
+        filter = BalancedFilter(
+            seat=Seat.NORTH,
+        )
+
+        # When
+        evaluation = filter.evaluate(deal)
+
+        # Then
+        self.assertFalse(evaluation)
+
+    def test_balanced_filter_with_hand_containing_singleton(self):
+        # Given
+        singleton_hand = Hand(
+            cards=[
+                Card(rank=Rank.ACE, suit=Suit.SPADES),
+                Card(rank=Rank.KING, suit=Suit.SPADES),
+                Card(rank=Rank.QUEEN, suit=Suit.SPADES),
+                Card(rank=Rank.JACK, suit=Suit.SPADES),
+                Card(rank=Rank.TEN, suit=Suit.SPADES),
+                Card(rank=Rank.NINE, suit=Suit.SPADES),
+                Card(rank=Rank.ACE, suit=Suit.HEARTS),
+                Card(rank=Rank.KING, suit=Suit.HEARTS),
+                Card(rank=Rank.QUEEN, suit=Suit.HEARTS),
+                Card(rank=Rank.ACE, suit=Suit.DIAMONDS),
+                Card(rank=Rank.KING, suit=Suit.DIAMONDS),
+                Card(rank=Rank.QUEEN, suit=Suit.DIAMONDS),
+                Card(rank=Rank.ACE, suit=Suit.CLUBS),
+            ],
+        )
+        deal = Deal(
+            board_number=1,
+            north=singleton_hand,
+            east=Hand(cards=[]),
+            south=Hand(cards=[]),
+            west=Hand(cards=[]),
+        )
+        filter = BalancedFilter(
+            seat=Seat.NORTH,
+        )
+
+        # When
+        evaluation = filter.evaluate(deal)
+
+        # Then
+        self.assertFalse(evaluation)
+
+    def test_balanced_filter_with_hand_containing_void(self):
+        # Given
+        void_hand = Hand(
+            cards=[
+                Card(rank=Rank.ACE, suit=Suit.SPADES),
+                Card(rank=Rank.KING, suit=Suit.SPADES),
+                Card(rank=Rank.QUEEN, suit=Suit.SPADES),
+                Card(rank=Rank.JACK, suit=Suit.SPADES),
+                Card(rank=Rank.TEN, suit=Suit.SPADES),
+                Card(rank=Rank.NINE, suit=Suit.SPADES),
+                Card(rank=Rank.ACE, suit=Suit.HEARTS),
+                Card(rank=Rank.KING, suit=Suit.HEARTS),
+                Card(rank=Rank.QUEEN, suit=Suit.HEARTS),
+                Card(rank=Rank.ACE, suit=Suit.DIAMONDS),
+                Card(rank=Rank.KING, suit=Suit.DIAMONDS),
+                Card(rank=Rank.QUEEN, suit=Suit.DIAMONDS),
+                Card(rank=Rank.JACK, suit=Suit.DIAMONDS),
+            ],
+        )
+        deal = Deal(
+            board_number=1,
+            north=void_hand,
+            east=Hand(cards=[]),
+            south=Hand(cards=[]),
+            west=Hand(cards=[]),
+        )
+        filter = BalancedFilter(
+            seat=Seat.NORTH,
+        )
+
+        # When
+        evaluation = filter.evaluate(deal)
+
+        # Then
+        self.assertFalse(evaluation)
 
 
 class DistributionFilterTestCase(unittest.TestCase):
