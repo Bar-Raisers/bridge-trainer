@@ -34,6 +34,20 @@ class ParseCriteriaTestCase(unittest.TestCase):
         # Then
         self.assertTrue(mock_filter.called)
 
+    @mock.patch("dealing.resources.criteria.parse_balanced_criteria")
+    def test_parse_criteria_with_balanced_criteria(self, mock_filter):
+        # Given
+        attributes = {
+            "type": "balanced",
+            "seat": "north",
+        }
+
+        # When
+        parse_criteria(attributes)
+
+        # Then
+        self.assertTrue(mock_filter.called)
+
     @mock.patch("dealing.resources.criteria.parse_distribution_criteria")
     def test_parse_criteria_with_distribution_criteria(self, mock_filter):
         # Given

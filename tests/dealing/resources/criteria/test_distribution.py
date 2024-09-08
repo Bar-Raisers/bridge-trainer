@@ -2,8 +2,29 @@ import unittest
 
 from common.enums import Seat
 from common.models import Distribution
-from dealing.filters import DistributionFilter
-from dealing.resources.criteria import parse_distribution_criteria
+from dealing.filters import BalancedFilter, DistributionFilter
+from dealing.resources.criteria import (
+    parse_balanced_criteria,
+    parse_distribution_criteria,
+)
+
+
+class ParseBalancedDistributionCriteriaTestCase(unittest.TestCase):
+
+    def test_parse_balanced_distribution_criteria(self):
+        # Given
+        seat = Seat.NORTH
+        attributes = {
+            "type": "balanced",
+            "seat": seat,
+        }
+
+        # When
+        filter = parse_balanced_criteria(attributes)
+
+        # Then
+        self.assertIsInstance(filter, BalancedFilter)
+        self.assertEqual(seat, filter.seat)
 
 
 class ParseDistributionCriteriaTestCase(unittest.TestCase):
