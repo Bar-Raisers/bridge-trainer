@@ -4,5 +4,6 @@ from common.utilities.hand.holding import get_holding_in_suit
 
 __all__ = [
     "calculate_high_card_points",
-    "get_distribution" "get_holding_in_suit",
+    "get_distribution",
+    "get_holding_in_suit",
 ]
