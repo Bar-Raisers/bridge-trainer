@@ -107,7 +107,3 @@ class HighCardPointsTestCase(unittest.TestCase):
 
         # Then
         self.assertEqual(expected_high_card_points, high_card_points)
-
-
-if __name__ == "__main__":
-    unittest.main()

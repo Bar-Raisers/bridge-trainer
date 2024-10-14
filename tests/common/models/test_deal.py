@@ -87,7 +87,3 @@ class DealTestCase(unittest.TestCase):
 
         # Then
         self.assertListEqual(north.cards, hand.cards)
-
-
-if __name__ == "__main__":
-    unittest.main()

@@ -27,7 +27,3 @@ class ParseHighCardPointsCriteriaTestCase(unittest.TestCase):
         self.assertEqual(seat, filter.seat)
         self.assertEqual(minimum_high_card_points, filter.minimum_high_card_points)
         self.assertEqual(maximum_high_card_points, filter.maximum_high_card_points)
-
-
-if __name__ == "__main__":
-    unittest.main()

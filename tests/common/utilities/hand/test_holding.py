@@ -55,7 +55,3 @@ class HoldingTestCase(unittest.TestCase):
 
         # Then
         self.assertListEqual(expected_diamond_holding.cards, holding.cards)
-
-
-if __name__ == "__main__":
-    unittest.main()

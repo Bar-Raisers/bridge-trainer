@@ -48,7 +48,3 @@ class ParseDistributionCriteriaTestCase(unittest.TestCase):
         self.assertIsInstance(filter, DistributionFilter)
         self.assertEqual(seat, filter.seat)
         self.assertEqual(expected_distribution, filter.distribution)
-
-
-if __name__ == "__main__":
-    unittest.main()

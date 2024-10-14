@@ -26,7 +26,3 @@ class ParseCriteriaFromJSONTestCase(unittest.TestCase):
         self.assertTrue(mock_open.called)
         self.assertTrue(mock_json_load.called)
         self.assertIsInstance(criteria, DealFilter)
-
-
-if __name__ == "__main__":
-    unittest.main()

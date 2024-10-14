@@ -31,7 +31,3 @@ class ParseSuitLengthCriteriaTestCase(unittest.TestCase):
         self.assertEqual(suit, filter.suit)
         self.assertEqual(minimum_suit_length, filter.minimum_suit_length)
         self.assertEqual(maximum_suit_length, filter.maximum_suit_length)
-
-
-if __name__ == "__main__":
-    unittest.main()

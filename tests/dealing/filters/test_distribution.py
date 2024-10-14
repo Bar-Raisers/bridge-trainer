@@ -287,7 +287,3 @@ class DistributionFilterTestCase(unittest.TestCase):
         self.assertTrue(east_evaluation)
         self.assertTrue(south_evaluation)
         self.assertTrue(west_evaluation)
-
-
-if __name__ == "__main__":
-    unittest.main()

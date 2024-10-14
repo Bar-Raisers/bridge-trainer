@@ -72,7 +72,3 @@ class RankTestCase(unittest.TestCase):
         for symbol, expected_rank in symbol_to_rank_map.items():
             rank = Rank.from_symbol(symbol)
             self.assertEqual(expected_rank, rank)
-
-
-if __name__ == "__main__":
-    unittest.main()
