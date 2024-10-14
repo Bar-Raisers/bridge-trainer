@@ -1,38 +1,21 @@
 import unittest
 
-from common.enums import Rank, Seat, Suit
-from common.models import Card, Deal, Hand
+from common.enums import Seat, Suit
+from common.models import Deal, Distribution, Hand
+from common.tests.utilities import generate_hand_with_distribution
 from dealing.filters import SuitLengthFilter
 
 
 class SuitLengthFilterTestCase(unittest.TestCase):
 
-    @classmethod
-    def setUpClass(cls):
-        # 5=4=3=1 Hand.
-        cls.hand = Hand(
-            cards=[
-                Card(rank=Rank.ACE, suit=Suit.SPADES),
-                Card(rank=Rank.KING, suit=Suit.SPADES),
-                Card(rank=Rank.QUEEN, suit=Suit.SPADES),
-                Card(rank=Rank.JACK, suit=Suit.SPADES),
-                Card(rank=Rank.TEN, suit=Suit.SPADES),
-                Card(rank=Rank.ACE, suit=Suit.HEARTS),
-                Card(rank=Rank.KING, suit=Suit.HEARTS),
-                Card(rank=Rank.QUEEN, suit=Suit.HEARTS),
-                Card(rank=Rank.JACK, suit=Suit.HEARTS),
-                Card(rank=Rank.ACE, suit=Suit.DIAMONDS),
-                Card(rank=Rank.KING, suit=Suit.DIAMONDS),
-                Card(rank=Rank.QUEEN, suit=Suit.DIAMONDS),
-                Card(rank=Rank.ACE, suit=Suit.CLUBS),
-            ],
-        )
-
     def test_suit_length_within_range(self):
-        # Given a 5=4=3=1 hand in North.
+        # Given
+        distribution = Distribution(distribution="5=4=3=1")
+        hand = generate_hand_with_distribution(distribution)
+
         deal = Deal(
             board_number=1,
-            north=self.hand,
+            north=hand,
             east=Hand(cards=[]),
             south=Hand(cards=[]),
             west=Hand(cards=[]),
@@ -51,10 +34,13 @@ class SuitLengthFilterTestCase(unittest.TestCase):
         self.assertTrue(evaluation)
 
     def test_suit_length_outside_range(self):
-        # Given a 5=4=3=1 hand in North.
+        # Given
+        distribution = Distribution(distribution="5=4=3=1")
+        hand = generate_hand_with_distribution(distribution)
+
         deal = Deal(
             board_number=1,
-            north=self.hand,
+            north=hand,
             east=Hand(cards=[]),
             south=Hand(cards=[]),
             west=Hand(cards=[]),
@@ -73,10 +59,13 @@ class SuitLengthFilterTestCase(unittest.TestCase):
         self.assertFalse(evaluation)
 
     def test_suit_length_for_every_suit(self):
-        # Given a 5=4=3=1 hand in North.
+        # Given
+        distribution = Distribution(distribution="5=4=3=1")
+        hand = generate_hand_with_distribution(distribution)
+
         deal = Deal(
             board_number=1,
-            north=self.hand,
+            north=hand,
             east=Hand(cards=[]),
             south=Hand(cards=[]),
             west=Hand(cards=[]),
@@ -119,10 +108,13 @@ class SuitLengthFilterTestCase(unittest.TestCase):
         self.assertTrue(clubs_evaluation)
 
     def test_suit_length_filter_in_every_seat(self):
-        # Given a 5=4=3=1 Hand in Every Seat.
+        # Given
+        distribution = Distribution(distribution="5=4=3=1")
+        hand = generate_hand_with_distribution(distribution)
+
         north_deal = Deal(
             board_number=1,
-            north=self.hand,
+            north=hand,
             east=Hand(cards=[]),
             south=Hand(cards=[]),
             west=Hand(cards=[]),
@@ -130,7 +122,7 @@ class SuitLengthFilterTestCase(unittest.TestCase):
         east_deal = Deal(
             board_number=1,
             north=Hand(cards=[]),
-            east=self.hand,
+            east=hand,
             south=Hand(cards=[]),
             west=Hand(cards=[]),
         )
@@ -138,7 +130,7 @@ class SuitLengthFilterTestCase(unittest.TestCase):
             board_number=1,
             north=Hand(cards=[]),
             east=Hand(cards=[]),
-            south=self.hand,
+            south=hand,
             west=Hand(cards=[]),
         )
         west_deal = Deal(
@@ -146,7 +138,7 @@ class SuitLengthFilterTestCase(unittest.TestCase):
             north=Hand(cards=[]),
             east=Hand(cards=[]),
             south=Hand(cards=[]),
-            west=self.hand,
+            west=hand,
         )
 
         north_filter, east_filter, south_filter, west_filter = (

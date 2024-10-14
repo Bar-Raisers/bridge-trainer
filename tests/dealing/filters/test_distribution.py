@@ -1,7 +1,8 @@
 import unittest
 
-from common.enums import Rank, Seat, Suit
-from common.models import Card, Deal, Distribution, Hand
+from common.enums import Seat
+from common.models import Deal, Distribution, Hand
+from common.tests.utilities import generate_hand_with_distribution
 from dealing.filters import BalancedFilter, DistributionFilter
 
 
@@ -9,23 +10,9 @@ class BalancedFilterTestCase(unittest.TestCase):
 
     def test_balanced_filter_with_4333_hand(self):
         # Given
-        hand_4333 = Hand(
-            cards=[
-                Card(rank=Rank.ACE, suit=Suit.SPADES),
-                Card(rank=Rank.KING, suit=Suit.SPADES),
-                Card(rank=Rank.QUEEN, suit=Suit.SPADES),
-                Card(rank=Rank.JACK, suit=Suit.SPADES),
-                Card(rank=Rank.ACE, suit=Suit.HEARTS),
-                Card(rank=Rank.KING, suit=Suit.HEARTS),
-                Card(rank=Rank.QUEEN, suit=Suit.HEARTS),
-                Card(rank=Rank.ACE, suit=Suit.DIAMONDS),
-                Card(rank=Rank.KING, suit=Suit.DIAMONDS),
-                Card(rank=Rank.QUEEN, suit=Suit.DIAMONDS),
-                Card(rank=Rank.ACE, suit=Suit.CLUBS),
-                Card(rank=Rank.KING, suit=Suit.CLUBS),
-                Card(rank=Rank.QUEEN, suit=Suit.CLUBS),
-            ],
-        )
+        distribution_4333 = Distribution(distribution="4=3=3=3")
+        hand_4333 = generate_hand_with_distribution(distribution_4333)
+
         deal = Deal(
             board_number=1,
             north=hand_4333,
@@ -45,23 +32,9 @@ class BalancedFilterTestCase(unittest.TestCase):
 
     def test_balanced_filter_with_4432_hand(self):
         # Given
-        hand_4432 = Hand(
-            cards=[
-                Card(rank=Rank.ACE, suit=Suit.SPADES),
-                Card(rank=Rank.KING, suit=Suit.SPADES),
-                Card(rank=Rank.QUEEN, suit=Suit.SPADES),
-                Card(rank=Rank.JACK, suit=Suit.SPADES),
-                Card(rank=Rank.ACE, suit=Suit.HEARTS),
-                Card(rank=Rank.KING, suit=Suit.HEARTS),
-                Card(rank=Rank.QUEEN, suit=Suit.HEARTS),
-                Card(rank=Rank.JACK, suit=Suit.HEARTS),
-                Card(rank=Rank.ACE, suit=Suit.DIAMONDS),
-                Card(rank=Rank.KING, suit=Suit.DIAMONDS),
-                Card(rank=Rank.QUEEN, suit=Suit.DIAMONDS),
-                Card(rank=Rank.ACE, suit=Suit.CLUBS),
-                Card(rank=Rank.KING, suit=Suit.CLUBS),
-            ],
-        )
+        distribution_4432 = Distribution(distribution="4=4=3=2")
+        hand_4432 = generate_hand_with_distribution(distribution_4432)
+
         deal = Deal(
             board_number=1,
             north=hand_4432,
@@ -81,23 +54,9 @@ class BalancedFilterTestCase(unittest.TestCase):
 
     def test_balanced_filter_with_5332_hand(self):
         # Given
-        hand_5332 = Hand(
-            cards=[
-                Card(rank=Rank.ACE, suit=Suit.SPADES),
-                Card(rank=Rank.KING, suit=Suit.SPADES),
-                Card(rank=Rank.QUEEN, suit=Suit.SPADES),
-                Card(rank=Rank.JACK, suit=Suit.SPADES),
-                Card(rank=Rank.TEN, suit=Suit.SPADES),
-                Card(rank=Rank.ACE, suit=Suit.HEARTS),
-                Card(rank=Rank.KING, suit=Suit.HEARTS),
-                Card(rank=Rank.QUEEN, suit=Suit.HEARTS),
-                Card(rank=Rank.ACE, suit=Suit.DIAMONDS),
-                Card(rank=Rank.KING, suit=Suit.DIAMONDS),
-                Card(rank=Rank.QUEEN, suit=Suit.DIAMONDS),
-                Card(rank=Rank.ACE, suit=Suit.CLUBS),
-                Card(rank=Rank.KING, suit=Suit.CLUBS),
-            ],
-        )
+        distribution_5332 = Distribution(distribution="5=3=3=2")
+        hand_5332 = generate_hand_with_distribution(distribution_5332)
+
         deal = Deal(
             board_number=1,
             north=hand_5332,
@@ -117,23 +76,9 @@ class BalancedFilterTestCase(unittest.TestCase):
 
     def test_balanced_filter_with_hand_containing_two_doubletons(self):
         # Given
-        two_doubletons_hand = Hand(
-            cards=[
-                Card(rank=Rank.ACE, suit=Suit.SPADES),
-                Card(rank=Rank.KING, suit=Suit.SPADES),
-                Card(rank=Rank.QUEEN, suit=Suit.SPADES),
-                Card(rank=Rank.JACK, suit=Suit.SPADES),
-                Card(rank=Rank.TEN, suit=Suit.SPADES),
-                Card(rank=Rank.NINE, suit=Suit.SPADES),
-                Card(rank=Rank.ACE, suit=Suit.HEARTS),
-                Card(rank=Rank.KING, suit=Suit.HEARTS),
-                Card(rank=Rank.QUEEN, suit=Suit.HEARTS),
-                Card(rank=Rank.ACE, suit=Suit.DIAMONDS),
-                Card(rank=Rank.KING, suit=Suit.DIAMONDS),
-                Card(rank=Rank.ACE, suit=Suit.CLUBS),
-                Card(rank=Rank.KING, suit=Suit.CLUBS),
-            ],
-        )
+        distribution_5422 = Distribution(distribution="5=4=2=2")
+        two_doubletons_hand = generate_hand_with_distribution(distribution_5422)
+
         deal = Deal(
             board_number=1,
             north=two_doubletons_hand,
@@ -153,23 +98,9 @@ class BalancedFilterTestCase(unittest.TestCase):
 
     def test_balanced_filter_with_hand_containing_singleton(self):
         # Given
-        singleton_hand = Hand(
-            cards=[
-                Card(rank=Rank.ACE, suit=Suit.SPADES),
-                Card(rank=Rank.KING, suit=Suit.SPADES),
-                Card(rank=Rank.QUEEN, suit=Suit.SPADES),
-                Card(rank=Rank.JACK, suit=Suit.SPADES),
-                Card(rank=Rank.TEN, suit=Suit.SPADES),
-                Card(rank=Rank.NINE, suit=Suit.SPADES),
-                Card(rank=Rank.ACE, suit=Suit.HEARTS),
-                Card(rank=Rank.KING, suit=Suit.HEARTS),
-                Card(rank=Rank.QUEEN, suit=Suit.HEARTS),
-                Card(rank=Rank.ACE, suit=Suit.DIAMONDS),
-                Card(rank=Rank.KING, suit=Suit.DIAMONDS),
-                Card(rank=Rank.QUEEN, suit=Suit.DIAMONDS),
-                Card(rank=Rank.ACE, suit=Suit.CLUBS),
-            ],
-        )
+        distribution_5431 = Distribution(distribution="5=4=3=1")
+        singleton_hand = generate_hand_with_distribution(distribution_5431)
+
         deal = Deal(
             board_number=1,
             north=singleton_hand,
@@ -189,23 +120,9 @@ class BalancedFilterTestCase(unittest.TestCase):
 
     def test_balanced_filter_with_hand_containing_void(self):
         # Given
-        void_hand = Hand(
-            cards=[
-                Card(rank=Rank.ACE, suit=Suit.SPADES),
-                Card(rank=Rank.KING, suit=Suit.SPADES),
-                Card(rank=Rank.QUEEN, suit=Suit.SPADES),
-                Card(rank=Rank.JACK, suit=Suit.SPADES),
-                Card(rank=Rank.TEN, suit=Suit.SPADES),
-                Card(rank=Rank.NINE, suit=Suit.SPADES),
-                Card(rank=Rank.ACE, suit=Suit.HEARTS),
-                Card(rank=Rank.KING, suit=Suit.HEARTS),
-                Card(rank=Rank.QUEEN, suit=Suit.HEARTS),
-                Card(rank=Rank.ACE, suit=Suit.DIAMONDS),
-                Card(rank=Rank.KING, suit=Suit.DIAMONDS),
-                Card(rank=Rank.QUEEN, suit=Suit.DIAMONDS),
-                Card(rank=Rank.JACK, suit=Suit.DIAMONDS),
-            ],
-        )
+        distribution_5440 = Distribution(distribution="5=4=4=0")
+        void_hand = generate_hand_with_distribution(distribution_5440)
+
         deal = Deal(
             board_number=1,
             north=void_hand,
@@ -226,37 +143,18 @@ class BalancedFilterTestCase(unittest.TestCase):
 
 class DistributionFilterTestCase(unittest.TestCase):
 
-    @classmethod
-    def setUpClass(cls):
-        # 5=4=3=1 Hand
-        cls.hand = Hand(
-            cards=[
-                Card(rank=Rank.ACE, suit=Suit.SPADES),
-                Card(rank=Rank.KING, suit=Suit.SPADES),
-                Card(rank=Rank.QUEEN, suit=Suit.SPADES),
-                Card(rank=Rank.JACK, suit=Suit.SPADES),
-                Card(rank=Rank.TEN, suit=Suit.SPADES),
-                Card(rank=Rank.ACE, suit=Suit.HEARTS),
-                Card(rank=Rank.KING, suit=Suit.HEARTS),
-                Card(rank=Rank.QUEEN, suit=Suit.HEARTS),
-                Card(rank=Rank.JACK, suit=Suit.HEARTS),
-                Card(rank=Rank.ACE, suit=Suit.DIAMONDS),
-                Card(rank=Rank.KING, suit=Suit.DIAMONDS),
-                Card(rank=Rank.QUEEN, suit=Suit.DIAMONDS),
-                Card(rank=Rank.ACE, suit=Suit.CLUBS),
-            ],
-        )
-
     def test_distribution_filter_with_matching_exact_distribution(self):
-        # Given a 5=4=3=1 hand in North.
+        # Given
+        distribution = Distribution(distribution="5=4=3=1")
+        hand = generate_hand_with_distribution(distribution)
+
         deal = Deal(
             board_number=1,
-            north=self.hand,
+            north=hand,
             east=Hand(cards=[]),
             south=Hand(cards=[]),
             west=Hand(cards=[]),
         )
-        distribution = Distribution(distribution="5=4=3=1")
         filter = DistributionFilter(
             seat=Seat.NORTH,
             distribution=distribution,
@@ -269,18 +167,22 @@ class DistributionFilterTestCase(unittest.TestCase):
         self.assertTrue(evaluation)
 
     def test_distribution_filter_with_different_exact_distribution(self):
-        # Given a 5=4=3=1 hand in North.
+        # Given
+        hand_distribution = Distribution(distribution="5=4=3=1")
+        hand = generate_hand_with_distribution(hand_distribution)
+
         deal = Deal(
             board_number=1,
-            north=self.hand,
+            north=hand,
             east=Hand(cards=[]),
             south=Hand(cards=[]),
             west=Hand(cards=[]),
         )
-        distribution = Distribution(distribution="1=3=4=5")
+
+        filter_distribution = Distribution(distribution="1=3=4=5")
         filter = DistributionFilter(
             seat=Seat.NORTH,
-            distribution=distribution,
+            distribution=filter_distribution,
         )
 
         # When
@@ -290,18 +192,22 @@ class DistributionFilterTestCase(unittest.TestCase):
         self.assertFalse(evaluation)
 
     def test_distribution_filter_with_matching_inexact_distribution(self):
-        # Given a 5=4=3=1 hand in North.
+        # Given
+        hand_distribution = Distribution(distribution="5=4=3=1")
+        hand = generate_hand_with_distribution(hand_distribution)
+
         deal = Deal(
             board_number=1,
-            north=self.hand,
+            north=hand,
             east=Hand(cards=[]),
             south=Hand(cards=[]),
             west=Hand(cards=[]),
         )
-        distribution = Distribution(distribution="5-4-3-1")
+
+        filter_distribution = Distribution(distribution="5-4-3-1")
         filter = DistributionFilter(
             seat=Seat.NORTH,
-            distribution=distribution,
+            distribution=filter_distribution,
         )
 
         # When
@@ -311,18 +217,22 @@ class DistributionFilterTestCase(unittest.TestCase):
         self.assertTrue(evaluation)
 
     def test_distribution_filter_with_different_inexact_distribution(self):
-        # Given a 5=4=3=1 hand in North.
+        # Given
+        hand_distribution = Distribution(distribution="5=4=3=1")
+        hand = generate_hand_with_distribution(hand_distribution)
+
         deal = Deal(
             board_number=1,
-            north=self.hand,
+            north=hand,
             east=Hand(cards=[]),
             south=Hand(cards=[]),
             west=Hand(cards=[]),
         )
-        distribution = Distribution(distribution="4-4-3-2")
+
+        filter_distribution = Distribution(distribution="4-4-3-2")
         filter = DistributionFilter(
             seat=Seat.NORTH,
-            distribution=distribution,
+            distribution=filter_distribution,
         )
 
         # When
@@ -332,7 +242,10 @@ class DistributionFilterTestCase(unittest.TestCase):
         self.assertFalse(evaluation)
 
     def test_distribution_filter_in_every_seat(self):
-        # Given a 5=4=3=1 Hand in Every Seat.
+        # Given
+        hand_distribution = Distribution(distribution="5=4=3=1")
+        hand = generate_hand_with_distribution(hand_distribution)
+
         template_kwargs = {
             "board_number": 1,
             "north": Hand(cards=[]),
@@ -342,24 +255,25 @@ class DistributionFilterTestCase(unittest.TestCase):
         }
 
         north_kwargs = template_kwargs.copy()
-        north_kwargs["north"] = self.hand
+        north_kwargs["north"] = hand
         north_deal = Deal(**north_kwargs)
 
         east_kwargs = template_kwargs.copy()
-        east_kwargs["east"] = self.hand
+        east_kwargs["east"] = hand
         east_deal = Deal(**east_kwargs)
 
         south_kwargs = template_kwargs.copy()
-        south_kwargs["south"] = self.hand
+        south_kwargs["south"] = hand
         south_deal = Deal(**south_kwargs)
 
         west_kwargs = template_kwargs.copy()
-        west_kwargs["west"] = self.hand
+        west_kwargs["west"] = hand
         west_deal = Deal(**west_kwargs)
 
-        distribution = Distribution(distribution="5=4=3=1")
+        filter_distribution = Distribution(distribution="5=4=3=1")
         north_filter, east_filter, south_filter, west_filter = (
-            DistributionFilter(seat=seat, distribution=distribution) for seat in Seat
+            DistributionFilter(seat=seat, distribution=filter_distribution)
+            for seat in Seat
         )
 
         # When
