@@ -19,7 +19,9 @@
         "terminal.integrated.defaultProfile.linux": "bash",
         "terminal.integrated.profiles.linux": {
           "bash": {
-            "path": "/usr/bin/bash"
+            "path": "/usr/bin/bash",
+            "icon": "terminal-bash",
+            "args": ["-l"]
           }
         }
       }
@@ -28,5 +30,14 @@
   "containerUser": "developer",
   "remoteUser": "developer",
   "updateRemoteUserUID": true,
+  "mounts": [
+    {
+      "source": "${localWorkspaceFolder}/.devcontainer/home/.bash_profile",
+      "target": "/home/developer/.bash_profile",
+      "type": "bind"
+    }
+  ],
+  "forwardPorts": [8000],
+  "userEnvProbe": "loginInteractiveShell",
   "postCreateCommand": ".devcontainer/post_create_command.sh"
 }

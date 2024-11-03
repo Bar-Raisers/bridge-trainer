@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-sudo poetry install
+poetry install
 trunk install
