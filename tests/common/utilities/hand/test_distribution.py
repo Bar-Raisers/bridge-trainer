@@ -17,7 +17,3 @@ class DistributionTestCase(unittest.TestCase):
 
         # Then
         self.assertEqual(expected_distribution, distribution)
-
-
-if __name__ == "__main__":
-    unittest.main()

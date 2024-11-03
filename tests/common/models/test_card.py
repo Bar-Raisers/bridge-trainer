@@ -60,7 +60,3 @@ class CardTestCase(unittest.TestCase):
 
         # Then
         self.assertEqual(expected_string, string)
-
-
-if __name__ == "__main__":
-    unittest.main()

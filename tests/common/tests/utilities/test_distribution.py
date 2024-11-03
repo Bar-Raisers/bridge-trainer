@@ -39,7 +39,3 @@ class GenerateHandTestCase(unittest.TestCase):
         # Then
         self.assertTrue(get_distribution(hand).matches(distribution))
         self.assertTrue(mock_shuffle.is_not_called)
-
-
-if __name__ == "__main__":
-    unittest.main()

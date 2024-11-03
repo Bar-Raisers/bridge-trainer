@@ -74,7 +74,3 @@ class PBNImportFormatterTestCase(unittest.TestCase):
 
         # Then
         self.assertEqual(expected_output, pbn_string)
-
-
-if __name__ == "__main__":
-    unittest.main()

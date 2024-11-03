@@ -68,7 +68,3 @@ class SuitTestCase(unittest.TestCase):
         for symbol, expected_suit in symbol_to_suit_map.items():
             suit = Suit.from_symbol(symbol)
             self.assertEqual(expected_suit, suit)
-
-
-if __name__ == "__main__":
-    unittest.main()

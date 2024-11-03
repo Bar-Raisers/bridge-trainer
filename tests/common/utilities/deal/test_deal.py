@@ -19,7 +19,3 @@ class WriteDealsToPBNFileTestCase(unittest.TestCase):
         self.assertTrue(mock_pbn_formatter.format.called)
         self.assertTrue(mock_open.called)
         self.assertTrue(mock_open.return_value.__enter__().write.called)
-
-
-if __name__ == "__main__":
-    unittest.main()

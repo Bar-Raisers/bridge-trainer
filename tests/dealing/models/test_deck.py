@@ -104,7 +104,3 @@ class DeckFactoryTestCase(unittest.TestCase):
         # Then
         reversed_cards = sorted(shuffled_deck.cards, reverse=True)
         self.assertListEqual(reversed_cards, shuffled_deck.cards)
-
-
-if __name__ == "__main__":
-    unittest.main()

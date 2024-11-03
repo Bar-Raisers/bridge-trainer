@@ -113,7 +113,3 @@ class HoldingTestCase(unittest.TestCase):
         # When & Then
         with self.assertRaises(ValidationError):
             Holding(cards=cards)
-
-
-if __name__ == "__main__":
-    unittest.main()

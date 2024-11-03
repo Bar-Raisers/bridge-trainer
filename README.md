@@ -12,9 +12,14 @@ The repository is configured with a simple Python 3.12 DevContainer that provide
 
 `trunk check`
 
+### Running Code Coverage
+
+`python3 -m coverage run -m unittest`
+`python3 -m coverage report`
+
 ### Running Unit Tests
 
-`python3 -m unittest discover`
+`python3 -m unittest`
 
 ## Generating Deals
 

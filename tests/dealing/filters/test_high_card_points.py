@@ -111,7 +111,3 @@ class HighCardPointsFilterTestCase(unittest.TestCase):
         self.assertTrue(east_evaluation)
         self.assertFalse(south_evaluation)
         self.assertFalse(west_evaluation)
-
-
-if __name__ == "__main__":
-    unittest.main()

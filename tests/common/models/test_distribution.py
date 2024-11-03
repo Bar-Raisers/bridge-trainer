@@ -250,7 +250,3 @@ class DistributionTestCase(unittest.TestCase):
         # When & Then
         with self.assertRaises(ValidationError):
             Distribution(distribution=malformed_distribution)
-
-
-if __name__ == "__main__":
-    unittest.main()

@@ -34,7 +34,3 @@ class SeatTestCase(unittest.TestCase):
         for board_number, expected_dealer in dealer_by_board_number.items():
             dealer = Seat.get_dealer_seat_from_board_number(board_number)
             self.assertEqual(expected_dealer, dealer)
-
-
-if __name__ == "__main__":
-    unittest.main()

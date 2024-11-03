@@ -142,7 +142,3 @@ class ParseCriteriaTestCase(unittest.TestCase):
 
         # Then
         self.assertTrue(mock_filter.called)
-
-
-if __name__ == "__main__":
-    unittest.main()
